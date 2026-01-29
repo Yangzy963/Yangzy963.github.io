@@ -1,0 +1,45 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'zh-cn'
+title = '杨宗亿的个人博客'
+theme = 'stack'
+
+[params]
+    mainSections = ["post"] 
+
+    [params.sidebar]
+        emoji = "📡"
+        subtitle = "通信工程 | Python | LLM"
+        avatar = "avatar.jpg" 
+
+# --- 菜单配置 (已更新为新版写法) ---
+[menu]
+    [[menu.main]]
+        identifier = "home"
+        name = "首页"
+        url = "/"
+        weight = 1
+        params = { icon = "home" } # 这里引用 assets/icons/home.svg
+
+    [[menu.main]]
+        identifier = "posts"
+        name = "文章"
+        url = "/post/"
+        weight = 2
+        params = { icon = "pen-tool" } # 这里引用 assets/icons/pen-tool.svg
+	
+# --- 这一部分控制右侧栏的小组件 (Widgets) ---
+[params.widgets]
+    enabled = ["search", "archives", "tag_cloud"] # 启用搜索、归档、标签云
+
+# 配置“搜索”组件
+[params.widgets.search]
+    title = "搜索"
+
+# 配置“归档”组件
+[params.widgets.archives]
+    title = "历史归档"
+    limit = 5
+
+# 配置“标签云”组件
+[params.widgets.tag_cloud]
+    title = "我的标签"
