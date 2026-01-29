@@ -1,10 +1,9 @@
-# 自动构建 Hugo 网站并部署到 GitHub Pages 的脚本
 name: deploy
 
 on:
   push:
     branches:
-      - main  # 确保这里和你推送的分支名一致
+      - main
 
 jobs:
   build:
