@@ -1,4 +1,4 @@
-baseURL = 'http://localhost:1313/'
+baseURL = 'https://yangzy963.github.io/'
 languageCode = 'zh-cn'
 title = '杨宗亿的个人博客'
 theme = 'stack'
