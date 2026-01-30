@@ -40,7 +40,8 @@
         <pubDate>Wed, 28 Jan 2026 20:59:18 +0800</pubDate>
         
         <guid>http://localhost:1313/post/articles01/</guid>
-        <description>&lt;p&gt;hello，hugo&lt;/p&gt;
+        <description>&lt;p&gt;hello，hugo
+成功完成了博客搭建——从本地到公网&lt;/p&gt;
 </description>
         </item>
         
