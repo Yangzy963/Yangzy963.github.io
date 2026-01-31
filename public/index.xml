@@ -6,7 +6,417 @@
         <description>Recent content on 杨宗亿的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 29 Jan 2026 21:34:37 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 31 Jan 2026 21:07:36 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Markdown写作快速上手</title>
+        <link>http://localhost:1313/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</link>
+        <pubDate>Sat, 31 Jan 2026 21:07:36 +0800</pubDate>
+        
+        <guid>http://localhost:1313/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</guid>
+        <description>&lt;p&gt;Markdown 是一种轻量级标记语言，它通过简单的符号实现排版，让作者专注于内容而非格式。本文将为你系统性地梳理常用的 Markdown 写作技巧。&lt;/p&gt;
+&lt;h2 id=&#34;一-标题与文本样式&#34;&gt;一、 标题与文本样式
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;多级标题
+通过在行首添加 # 来定义标题级别，最多支持六级&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 一级标题
+## 二级标题
+...
+###### 六级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;文本强调&lt;br&gt;
+加粗： 使用 &lt;strong&gt;文本&lt;/strong&gt;&lt;br&gt;
+斜体： 使用 &lt;em&gt;文本&lt;/em&gt;&lt;br&gt;
+&lt;u&gt;下划线&lt;/u&gt;：使用 HTML 标签 &lt;u&gt;文本&lt;/u&gt;&lt;/li&gt;
+&lt;li&gt;上下标与表情&lt;br&gt;
+下标：使用 H&lt;del&gt;2&lt;/del&gt;O 或 HTML 标签 H&lt;sub&gt;2&lt;/sub&gt;O&lt;br&gt;
+表情符号：支持标准的 Emoji 代码，如 :smile: 😄&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;二-列表与任务管理&#34;&gt;二、 列表与任务管理
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;有序与无序列表
+&lt;ul&gt;
+&lt;li&gt;有序列表：使用 1. 、2.   。例如：
+&lt;ol&gt;
+&lt;li&gt;打开冰箱&lt;/li&gt;
+&lt;li&gt;把大象塞进去&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;无序列表：使用 - 或 * .例如：
+&lt;ul&gt;
+&lt;li&gt;项目A&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;项目B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;任务列表&lt;br&gt;
+用于管理待办事项:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 已完成事项  &amp;ndash;&amp;gt;    &lt;code&gt; - [x]事项内容&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 未完成事项   &amp;ndash;&amp;gt;    &lt;code&gt; - []事项内容&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三引用代码与链接&#34;&gt;三、引用、代码与链接
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;引用&lt;br&gt;
+在段落开头使用 &amp;gt; :&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是一段引用文字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;代码展示&lt;br&gt;
+使用反引号标注行内代码 printf()，或者使用三个反引号包裹代码块：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;链接与参考&lt;br&gt;
+普通链接：&lt;a class=&#34;link&#34; href=&#34;https://baidu.com%22%e7%99%be%e5%ba%a6%e7%bd%91%e7%ab%99%22&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度&lt;/a&gt;  &lt;code&gt;实现方式：[百度](https://baidu.com&amp;quot;百度网站&amp;quot;)&lt;/code&gt;&lt;br&gt;
+引用链接：&lt;a class=&#34;link&#34; href=&#34;https://baidu.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度&lt;/a&gt; &lt;code&gt;在文中写 [百度][id]，在文末定义  [id]: https://baidu.com&lt;/code&gt;&lt;br&gt;
+自动链接：直接输入网址即可自动转换，如 &lt;a class=&#34;link&#34; href=&#34;http://yangzongyi.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://yangzongyi.cn&lt;/a&gt; &lt;br&gt;
+页内锚点：&lt;a class=&#34;link&#34; href=&#34;#%e4%b8%80-%e6%a0%87%e9%a2%98%e4%b8%8e%e6%96%87%e6%9c%ac%e6%a0%b7%e5%bc%8f&#34; &gt;跳转到标题一&lt;/a&gt;  &lt;code&gt;[跳转到标题一](#一-标题与文本样式)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;四结构化数据表格与脚注&#34;&gt;四、结构化数据：表格与脚注
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;表格排版&lt;br&gt;
+使用|分隔单元，使用 - 分隔表头。通过 : 控制对齐方式：&lt;br&gt;
+&lt;code&gt;:--  左对齐&lt;/code&gt; &lt;br&gt;
+&lt;code&gt;--：右对齐&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;:--: 居中对齐&lt;/code&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;姓名&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;年龄&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;性别&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;杜夫&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;58&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;男&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;李晴兆&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;71&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;女&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上表Markdown语法如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;|姓名|年龄|性别|
+|:--|--:|:--:|
+|杜夫|58|男|
+|李晴兆|71|女|
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;脚注&lt;br&gt;
+在需要解释的词语后使用 [^序号]  , 并在文末进行说明：[^序号]:脚注的内容。若被解释的内容与脚注同一行则不会生效。    示例:未雨绸缪&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;五其他元素&#34;&gt;五、其他元素
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;分割线：使用三个减号&amp;mdash;即可生成横线。&lt;/li&gt;
+&lt;li&gt;数学公式:Markdown支持嵌入LaTex格式的数学公式，用于科学记录和学术写作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;《诗经·豳风·鸱鸮》：「迨天之未阴雨，彻彼桑土，绸缪牖户。」（绸缪：修补）意思是鸱鸮在未下雨时就啄来桑树皮，修补鸟巢。后用「未雨绸缪」比喻事先作好准备。&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>draft</title>
+        <link>http://localhost:1313/post/draft/</link>
+        <pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate>
+        
+        <guid>http://localhost:1313/post/draft/</guid>
+        <description>&lt;h1 id=&#34;标题1&#34;&gt;标题1
+&lt;/h1&gt;&lt;p&gt;你&lt;/p&gt;
+&lt;h2 id=&#34;标题2&#34;&gt;标题2
+&lt;/h2&gt;&lt;p&gt;你&lt;/p&gt;
+&lt;h3 id=&#34;标题3&#34;&gt;标题3
+&lt;/h3&gt;&lt;p&gt;你&lt;/p&gt;
+&lt;h6 id=&#34;标题6&#34;&gt;标题6
+&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;这是一段引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有序列表：&lt;/p&gt;
+&lt;p&gt;把大象放进冰箱：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开冰箱&lt;/li&gt;
+&lt;li&gt;塞进去&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;无序列表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;私天地&lt;/li&gt;
+&lt;li&gt;杨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;哈哈哈哈哈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;明天要做的事情：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 吃饭&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 睡觉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;代码块:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;int main()    --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	return 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;数学公式：
+markdown格式&lt;/p&gt;
+&lt;p&gt;表格：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;姓名&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;年龄&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;日期&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;杨&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;19&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2033&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;李白&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;449&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;203333&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;脚注:&lt;br&gt;
+伦理&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;横线：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;hahahhhhhh&lt;/p&gt;
+&lt;p&gt;链接：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://baidu.com%27%e4%b8%80%e4%b8%aa%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%27&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;引用链接：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://baidu.com&#34;  title=&#34;一个搜索引擎&#34;
+     target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;请参考&lt;a class=&#34;link&#34; href=&#34;#%e6%a0%87%e9%a2%981&#34; &gt;标题1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://yangzongyi.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://yangzongyi.cn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://yangzongyi.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://yangzongyi.cn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;下划线&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;表情符号：参考emoji国际表情通用代码&lt;/p&gt;
+&lt;p&gt;:smile:&lt;/p&gt;
+&lt;p&gt;下标：&lt;/p&gt;
+&lt;p&gt;H&lt;del&gt;2&lt;/del&gt;O&lt;/p&gt;
+&lt;p&gt;高亮：&lt;/p&gt;
+&lt;p&gt;==这是一段高亮文字==&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;这是一段高亮&lt;/mark&gt;。&lt;/p&gt;
+&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;h2 id=&#34;markdown语法指南&#34;&gt;Markdown语法指南
+&lt;/h2&gt;&lt;p&gt;Markdown 是一种轻量级标记语言，它通过简单的符号实现排版，让作者专注于内容而非格式。本文将为你系统性地梳理常用的 Markdown 写作技巧。&lt;/p&gt;
+&lt;h2 id=&#34;一-标题与文本样式&#34;&gt;一、 标题与文本样式
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;多级标题
+通过在行首添加 # 来定义标题级别，最多支持六级&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 一级标题
+## 二级标题
+...
+###### 六级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;文本强调&lt;br&gt;
+加粗： 使用 &lt;strong&gt;文本&lt;/strong&gt;&lt;br&gt;
+斜体： 使用 &lt;em&gt;文本&lt;/em&gt;&lt;br&gt;
+&lt;u&gt;下划线&lt;/u&gt;：使用 HTML 标签 &lt;u&gt;文本&lt;/u&gt;&lt;/li&gt;
+&lt;li&gt;上下标与表情&lt;br&gt;
+下标：使用 H&lt;del&gt;2&lt;/del&gt;O 或 HTML 标签 H&lt;sub&gt;2&lt;/sub&gt;O&lt;br&gt;
+表情符号：支持标准的 Emoji 代码，如 :smile: 😄&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;二-列表与任务管理&#34;&gt;二、 列表与任务管理
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;有序与无序列表
+&lt;ul&gt;
+&lt;li&gt;有序列表：使用 1. 、2.   。例如：
+&lt;ol&gt;
+&lt;li&gt;打开冰箱&lt;/li&gt;
+&lt;li&gt;把大象塞进去&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;无序列表：使用 - 或 * .例如：
+&lt;ul&gt;
+&lt;li&gt;项目A&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;项目B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;任务列表&lt;br&gt;
+用于管理待办事项:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 已完成事项  &amp;ndash;&amp;gt;    &lt;code&gt; - [x]事项内容&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;[]未完成事项   &amp;ndash;&amp;gt;    &lt;code&gt; - []事项内容&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三引用代码与链接&#34;&gt;三、引用、代码与链接
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;引用&lt;br&gt;
+在段落开头使用 &amp;gt; :&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是一段引用文字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;代码展示&lt;br&gt;
+使用反引号标注行内代码 printf()，或者使用三个反引号包裹代码块：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;链接与参考&lt;br&gt;
+普通链接：&lt;a class=&#34;link&#34; href=&#34;https://baidu.com%22%e7%99%be%e5%ba%a6%e7%bd%91%e7%ab%99%22&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度&lt;/a&gt;  &lt;code&gt;实现方式：[百度](https://baidu.com&amp;quot;百度网站&amp;quot;)&lt;/code&gt;&lt;br&gt;
+引用链接：&lt;a class=&#34;link&#34; href=&#34;https://baidu.com&#34;  title=&#34;一个搜索引擎&#34;
+     target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度&lt;/a&gt; &lt;code&gt;在文中写 [百度][id]，在文末定义  [id]: https://baidu.com&lt;/code&gt;&lt;br&gt;
+自动链接：直接输入网址即可自动转换，如 &lt;a class=&#34;link&#34; href=&#34;http://yangzongyi.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://yangzongyi.cn&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;四结构化数据表格与脚注&#34;&gt;四、结构化数据：表格与脚注
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;表格排版&lt;br&gt;
+使用|分隔单元，使用 - 分隔表头。通过 : 控制对齐方式：&lt;br&gt;
+:- -  左对齐 &lt;br&gt;
+&amp;ndash; -：  右对齐&lt;br&gt;
+:- -: 居中对齐
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;姓名&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;年龄&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;性别&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;杜夫&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;58&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;男&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;李晴兆&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;71&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;女&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;脚注&lt;br&gt;
+在需要解释的词语后使用 [^序号]  , 并在文末进行说明：[^序号]:脚注的内容。若被解释的内容与脚注同一行则不会生效。    示例:未雨绸缪&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;五其他元素&#34;&gt;五、其他元素
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;分割线：使用三个减号&amp;mdash;即可生成横线。&lt;/li&gt;
+&lt;li&gt;数学公式:Markdown支持嵌入LaTex格式的数学公式，用于科学记录和学术写作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;指人与人相处、社会行为中应遵循的道德准则、规范及哲学思考。&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;《诗经·豳风·鸱鸮》：「迨天之未阴雨，彻彼桑土，绸缪牖户。」（绸缪：修补）意思是鸱鸮在未下雨时就啄来桑树皮，修补鸟巢。后用「未雨绸缪」比喻事先作好准备。&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>Git_核心指令与工作流指南</title>
+        <link>http://localhost:1313/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate>
+        
+        <guid>http://localhost:1313/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;pre&gt;&lt;code&gt;在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#一、基础配置
+在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：
+Bash
+git config &amp;ndash;global user.name &amp;ldquo;YourName&amp;rdquo;   &amp;ndash;&amp;raquo;设置全局用户名&lt;/p&gt;
+&lt;p&gt;git config &amp;ndash;global user.email &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;mailto:yourmail@example.com&#34; &gt;yourmail@example.com&lt;/a&gt;&amp;rdquo;  &amp;ndash;&amp;raquo;设置全局邮箱&lt;/p&gt;
+&lt;p&gt;git config &amp;ndash;list  &amp;ndash;&amp;raquo;验证配置&lt;/p&gt;
+&lt;p&gt;##二、核心工作流
+Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &amp;ndash;&amp;gt; 暂存区 &amp;ndash;&amp;gt; 本地仓库
+1.初始化：使用 git init 使当前文件夹受 Git 管理。
+2.追踪：使用 git add . 将修改后的文件存入暂存区。
+3.提交：使用 git commit -m &amp;ldquo;commit message&amp;rdquo; 将暂存区内容永久保存到本地仓库。&lt;/p&gt;
+&lt;p&gt;##三、常用指令速查
+起步与同步
+指令               		作用
+git clone &lt;url&gt;     	从远程仓库下载完整项目到本地
+git status          	查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存）
+git pull            	从远程拉取最新代码并合并到本地
+git push				将本地的存档推送至远程服务器&lt;/p&gt;
+&lt;p&gt;分支管理（分支允许你在不影响主线代码的情况下开发新功能）
+git branch           	查看分支
+git checkout -b &lt;name&gt;
+git merge &lt;name&gt;        合并分支
+git branch -d &lt;name&gt;	删除分支&lt;/p&gt;
+&lt;p&gt;撤销与恢复
+git log &amp;ndash;oneline        查看历史
+git stash                暂存工作
+git stash pop            回复暂存
+git reset &amp;ndash;soft HEAD^   撤销提交&lt;/p&gt;
+&lt;p&gt;##四、提交规范建议
+推荐格式&amp;mdash;&amp;gt; 类型：描述
+feat：新增功能
+fix ：修复BUG
+docs: 文档修复
+refactor: 代码重构&lt;/p&gt;
+&lt;p&gt;##五、博客发布流程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;本地预览与调试
+Bash
+hugo server -D   &amp;ndash;&amp;gt;  运行本地服务器（-D 参数确保草稿也能显示）
+hugo server&lt;/li&gt;
+&lt;li&gt;检查图片路径
+如果在文章中引用了图片，请确保图片已放置在以下位置之一：
+放在 static/images/ 目录下，Markdown 引用路径为 /images/xxx.png。&lt;/li&gt;
+&lt;li&gt;执行线上推送
+本地预览满意后，使用Git将内容推送到Github Pages：
+Bash
+1）git add .  &amp;ndash;&amp;raquo; 将所有改动添加到暂存区
+2）git commit -m &amp;lsquo;feat :新增Git核心指令指南&amp;rsquo;  &amp;ndash;&amp;raquo;提交存档，备注建议使用提交规范建议
+3）git push     &amp;ndash;&amp;raquo; 推送到远程Github仓库&lt;/li&gt;
+&lt;li&gt;最终确认
+推送完成后，访问绑定的域名，如:xxxxxx.cn&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>个人博客创建流程</title>
         <link>http://localhost:1313/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/</link>
         <pubDate>Thu, 29 Jan 2026 21:34:37 +0800</pubDate>

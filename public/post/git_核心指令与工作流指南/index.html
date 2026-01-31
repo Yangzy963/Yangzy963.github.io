@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一、安装流程\n下载hugo压缩包 在含有hugo.exe的文件夹下输入cmd 执行hugo new site my_blog :创建文件夹,以my_blog为例 系统提示按照图中的几个步骤就能搭建个人博客 [图片] 将hugo.exe配置系统变量，关掉目前所有打开的 cmd / PowerShell 窗口，重新开放一个才生效 切换到刚才创建的文件目录： cd my_blog 输入：hugo server &ndash;buildDrafts 出现如下页面说明服务已经搭好，还没安装主题 [图片] 前往https://themes.gohugo.io/下载主题压缩包，存放到所创建文件夹下的themes中解压缩。 此时需要避免出现 my_blog\\themes\\stack\\stack的情况，此时 需要将第二个stack中的所有内容剪切到第一个stack中，并删除第二个stack文件夹。{因为 Hugo 在第一层 themes/stack/ 下找不到 layouts 和 theme.toml，它就不知道该如何渲染页面，所以直接给你显示了 404 错误。} 在&hellip;\\my_blog&gt;路径下输入：hugo new post/Article01.md 快速创建一个新的 Markdown 内容文件 注意上述中的post如果改为posts可能会导致Article01.md中的内容无法正常显示 在创建的my_blog文件下中在文本编辑器中打开 hugo.toml ，在末尾添加：theme = &lsquo;stack&rsquo;，注意此处的主题名要与theme文件夹下的相同。 进入content\\posts中找到Article01.md,用文本编辑器打开，将draft = true中的true改为false，让这篇文章从“草稿”变成“正式内容”。 输入：hugo server &ndash;buildDrafts 或 hugo server 出现如下页面说明服务已经搭好 [图片] ">
-<title>个人博客创建流程</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。 #一、基础配置 在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息： Bash git config &ndash;global user.name &ldquo;YourName&rdquo; &ndash;&raquo;设置全局用户名\ngit config &ndash;global user.email &ldquo;yourmail@example.com&rdquo; &ndash;&raquo;设置全局邮箱\ngit config &ndash;list &ndash;&raquo;验证配置\n##二、核心工作流 Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &ndash;&gt; 暂存区 &ndash;&gt; 本地仓库 1.初始化：使用 git init 使当前文件夹受 Git 管理。 2.追踪：使用 git add . 将修改后的文件存入暂存区。 3.提交：使用 git commit -m &ldquo;commit message&rdquo; 将暂存区内容永久保存到本地仓库。\n##三、常用指令速查 起步与同步 指令 作用 git clone 从远程仓库下载完整项目到本地 git status 查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存） git pull 从远程拉取最新代码并合并到本地 git push\t将本地的存档推送至远程服务器\n分支管理（分支允许你在不影响主线代码的情况下开发新功能） git branch 查看分支 git checkout -b git merge 合并分支 git branch -d 删除分支\n">
+<title>Git_核心指令与工作流指南</title>
 
-<link rel='canonical' href='http://localhost:1313/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/'>
+<link rel='canonical' href='http://localhost:1313/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/'>
 
-<link rel="stylesheet" href="/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css"><meta property='og:title' content="个人博客创建流程">
-<meta property='og:description' content="一、安装流程\n下载hugo压缩包 在含有hugo.exe的文件夹下输入cmd 执行hugo new site my_blog :创建文件夹,以my_blog为例 系统提示按照图中的几个步骤就能搭建个人博客 [图片] 将hugo.exe配置系统变量，关掉目前所有打开的 cmd / PowerShell 窗口，重新开放一个才生效 切换到刚才创建的文件目录： cd my_blog 输入：hugo server &ndash;buildDrafts 出现如下页面说明服务已经搭好，还没安装主题 [图片] 前往https://themes.gohugo.io/下载主题压缩包，存放到所创建文件夹下的themes中解压缩。 此时需要避免出现 my_blog\\themes\\stack\\stack的情况，此时 需要将第二个stack中的所有内容剪切到第一个stack中，并删除第二个stack文件夹。{因为 Hugo 在第一层 themes/stack/ 下找不到 layouts 和 theme.toml，它就不知道该如何渲染页面，所以直接给你显示了 404 错误。} 在&hellip;\\my_blog&gt;路径下输入：hugo new post/Article01.md 快速创建一个新的 Markdown 内容文件 注意上述中的post如果改为posts可能会导致Article01.md中的内容无法正常显示 在创建的my_blog文件下中在文本编辑器中打开 hugo.toml ，在末尾添加：theme = &lsquo;stack&rsquo;，注意此处的主题名要与theme文件夹下的相同。 进入content\\posts中找到Article01.md,用文本编辑器打开，将draft = true中的true改为false，让这篇文章从“草稿”变成“正式内容”。 输入：hugo server &ndash;buildDrafts 或 hugo server 出现如下页面说明服务已经搭好 [图片] ">
-<meta property='og:url' content='http://localhost:1313/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/'>
+<link rel="stylesheet" href="/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css"><meta property='og:title' content="Git_核心指令与工作流指南">
+<meta property='og:description' content="在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。 #一、基础配置 在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息： Bash git config &ndash;global user.name &ldquo;YourName&rdquo; &ndash;&raquo;设置全局用户名\ngit config &ndash;global user.email &ldquo;yourmail@example.com&rdquo; &ndash;&raquo;设置全局邮箱\ngit config &ndash;list &ndash;&raquo;验证配置\n##二、核心工作流 Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &ndash;&gt; 暂存区 &ndash;&gt; 本地仓库 1.初始化：使用 git init 使当前文件夹受 Git 管理。 2.追踪：使用 git add . 将修改后的文件存入暂存区。 3.提交：使用 git commit -m &ldquo;commit message&rdquo; 将暂存区内容永久保存到本地仓库。\n##三、常用指令速查 起步与同步 指令 作用 git clone 从远程仓库下载完整项目到本地 git status 查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存） git pull 从远程拉取最新代码并合并到本地 git push\t将本地的存档推送至远程服务器\n分支管理（分支允许你在不影响主线代码的情况下开发新功能） git branch 查看分支 git checkout -b git merge 合并分支 git branch -d 删除分支\n">
+<meta property='og:url' content='http://localhost:1313/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/'>
 <meta property='og:site_name' content='杨宗亿的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-29T21:34:37&#43;08:00'/><meta property='article:modified_time' content='2026-01-29T21:34:37&#43;08:00'/>
-<meta name="twitter:title" content="个人博客创建流程">
-<meta name="twitter:description" content="一、安装流程\n下载hugo压缩包 在含有hugo.exe的文件夹下输入cmd 执行hugo new site my_blog :创建文件夹,以my_blog为例 系统提示按照图中的几个步骤就能搭建个人博客 [图片] 将hugo.exe配置系统变量，关掉目前所有打开的 cmd / PowerShell 窗口，重新开放一个才生效 切换到刚才创建的文件目录： cd my_blog 输入：hugo server &ndash;buildDrafts 出现如下页面说明服务已经搭好，还没安装主题 [图片] 前往https://themes.gohugo.io/下载主题压缩包，存放到所创建文件夹下的themes中解压缩。 此时需要避免出现 my_blog\\themes\\stack\\stack的情况，此时 需要将第二个stack中的所有内容剪切到第一个stack中，并删除第二个stack文件夹。{因为 Hugo 在第一层 themes/stack/ 下找不到 layouts 和 theme.toml，它就不知道该如何渲染页面，所以直接给你显示了 404 错误。} 在&hellip;\\my_blog&gt;路径下输入：hugo new post/Article01.md 快速创建一个新的 Markdown 内容文件 注意上述中的post如果改为posts可能会导致Article01.md中的内容无法正常显示 在创建的my_blog文件下中在文本编辑器中打开 hugo.toml ，在末尾添加：theme = &lsquo;stack&rsquo;，注意此处的主题名要与theme文件夹下的相同。 进入content\\posts中找到Article01.md,用文本编辑器打开，将draft = true中的true改为false，让这篇文章从“草稿”变成“正式内容”。 输入：hugo server &ndash;buildDrafts 或 hugo server 出现如下页面说明服务已经搭好 [图片] ">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-30T20:55:18&#43;08:00'/><meta property='article:modified_time' content='2026-01-30T20:55:18&#43;08:00'/>
+<meta name="twitter:title" content="Git_核心指令与工作流指南">
+<meta name="twitter:description" content="在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。 #一、基础配置 在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息： Bash git config &ndash;global user.name &ldquo;YourName&rdquo; &ndash;&raquo;设置全局用户名\ngit config &ndash;global user.email &ldquo;yourmail@example.com&rdquo; &ndash;&raquo;设置全局邮箱\ngit config &ndash;list &ndash;&raquo;验证配置\n##二、核心工作流 Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &ndash;&gt; 暂存区 &ndash;&gt; 本地仓库 1.初始化：使用 git init 使当前文件夹受 Git 管理。 2.追踪：使用 git add . 将修改后的文件存入暂存区。 3.提交：使用 git commit -m &ldquo;commit message&rdquo; 将暂存区内容永久保存到本地仓库。\n##三、常用指令速查 起步与同步 指令 作用 git clone 从远程仓库下载完整项目到本地 git status 查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存） git pull 从远程拉取最新代码并合并到本地 git push\t将本地的存档推送至远程服务器\n分支管理（分支允许你在不影响主线代码的情况下开发新功能） git branch 查看分支 git checkout -b git merge 合并分支 git branch -d 删除分支\n">
     </head>
     <body class="
     article-page
@@ -131,7 +131,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/">个人博客创建流程</a>
+            <a href="/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/">Git_核心指令与工作流指南</a>
         </h2>
     
         
@@ -153,7 +153,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published" datetime='2026-01-29T21:34:37&#43;08:00'>Thursday, January 29, 2026</time>
+                <time class="article-time--published" datetime='2026-01-30T20:55:18&#43;08:00'>Friday, January 30, 2026</time>
             </div>
         
 
@@ -185,25 +185,59 @@
     <section class="article-content">
     
     
-    <p>一、安装流程</p>
+    <pre><code>在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
+</code></pre>
+<p>#一、基础配置
+在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：
+Bash
+git config &ndash;global user.name &ldquo;YourName&rdquo;   &ndash;&raquo;设置全局用户名</p>
+<p>git config &ndash;global user.email &ldquo;<a class="link" href="mailto:yourmail@example.com" >yourmail@example.com</a>&rdquo;  &ndash;&raquo;设置全局邮箱</p>
+<p>git config &ndash;list  &ndash;&raquo;验证配置</p>
+<p>##二、核心工作流
+Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &ndash;&gt; 暂存区 &ndash;&gt; 本地仓库
+1.初始化：使用 git init 使当前文件夹受 Git 管理。
+2.追踪：使用 git add . 将修改后的文件存入暂存区。
+3.提交：使用 git commit -m &ldquo;commit message&rdquo; 将暂存区内容永久保存到本地仓库。</p>
+<p>##三、常用指令速查
+起步与同步
+指令               		作用
+git clone <url>     	从远程仓库下载完整项目到本地
+git status          	查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存）
+git pull            	从远程拉取最新代码并合并到本地
+git push				将本地的存档推送至远程服务器</p>
+<p>分支管理（分支允许你在不影响主线代码的情况下开发新功能）
+git branch           	查看分支
+git checkout -b <name>
+git merge <name>        合并分支
+git branch -d <name>	删除分支</p>
+<p>撤销与恢复
+git log &ndash;oneline        查看历史
+git stash                暂存工作
+git stash pop            回复暂存
+git reset &ndash;soft HEAD^   撤销提交</p>
+<p>##四、提交规范建议
+推荐格式&mdash;&gt; 类型：描述
+feat：新增功能
+fix ：修复BUG
+docs: 文档修复
+refactor: 代码重构</p>
+<p>##五、博客发布流程</p>
 <ol>
-<li>下载hugo压缩包</li>
-<li>在含有hugo.exe的文件夹下输入cmd</li>
-<li>执行hugo new site my_blog   :创建文件夹,以my_blog为例
-系统提示按照图中的几个步骤就能搭建个人博客
-[图片]</li>
-<li>将hugo.exe配置系统变量，关掉目前所有打开的 cmd / PowerShell 窗口，重新开放一个才生效</li>
-<li>切换到刚才创建的文件目录： cd my_blog</li>
-<li>输入：hugo server &ndash;buildDrafts 出现如下页面说明服务已经搭好，还没安装主题
-[图片]</li>
-<li>前往https://themes.gohugo.io/下载主题压缩包，存放到所创建文件夹下的themes中解压缩。
-此时需要避免出现  my_blog\themes\stack\stack的情况，此时 需要将第二个stack中的所有内容剪切到第一个stack中，并删除第二个stack文件夹。{因为 Hugo 在第一层 themes/stack/ 下找不到 layouts 和 theme.toml，它就不知道该如何渲染页面，所以直接给你显示了 404 错误。}</li>
-<li>在&hellip;\my_blog&gt;路径下输入：hugo new post/Article01.md 快速创建一个新的 Markdown 内容文件
-注意上述中的post如果改为posts可能会导致Article01.md中的内容无法正常显示</li>
-<li>在创建的my_blog文件下中在文本编辑器中打开 hugo.toml ，在末尾添加：theme = &lsquo;stack&rsquo;，注意此处的主题名要与theme文件夹下的相同。</li>
-<li>进入content\posts中找到Article01.md,用文本编辑器打开，将draft = true中的true改为false，让这篇文章从“草稿”变成“正式内容”。</li>
-<li>输入：hugo server &ndash;buildDrafts 或 hugo server 出现如下页面说明服务已经搭好
-[图片]</li>
+<li>本地预览与调试
+Bash
+hugo server -D   &ndash;&gt;  运行本地服务器（-D 参数确保草稿也能显示）
+hugo server</li>
+<li>检查图片路径
+如果在文章中引用了图片，请确保图片已放置在以下位置之一：
+放在 static/images/ 目录下，Markdown 引用路径为 /images/xxx.png。</li>
+<li>执行线上推送
+本地预览满意后，使用Git将内容推送到Github Pages：
+Bash
+1）git add .  &ndash;&raquo; 将所有改动添加到暂存区
+2）git commit -m &lsquo;feat :新增Git核心指令指南&rsquo;  &ndash;&raquo;提交存档，备注建议使用提交规范建议
+3）git push     &ndash;&raquo; 推送到远程Github仓库</li>
+<li>最终确认
+推送完成后，访问绑定的域名，如:xxxxxx.cn</li>
 </ol>
 
 </section>
