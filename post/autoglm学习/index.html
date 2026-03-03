@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Open-AutoGLM 源代码解析文档 这是关于 Open-AutoGLM 源代码的解析文档。从架构设计、核心类逻辑、提示词工程、动作执行层以及应用场景五个维度进行拆解。\n1 整体架构设计 1.1 系统概述 基于 AutoGLM（或其他视觉语言模型，VLM）构建，旨在通过自然语言指令自动化 Android 设备的操作。\n与传统的基于规则或脚本（如 Appium、UiAutomator）的自动化不同，并不依赖预先编写的控件 ID 或坐标路径。相反，它模仿人类的交互方式：\n看：通过 ADB 获取屏幕截图和当前应用信息。 想：利用多模态大模型分析当前界面，结合任务上下文进行规划。 做：将模型输出的决策转化为具体的 ADB 指令执行。 反馈：观察操作后的新界面，进入下一个循环。 1.2 核心模块划分 代码结构清晰地反映了智能体的分层架构：\n大脑层 (PhoneAgent)：负责任务编排、状态管理、与模型通信以及决策循环的控制。 认知层 (prompts_zh.py)：定义了智能体的世界观和操作手册。通过 System Prompt 约束模型的输出格式、逻辑推理方式以及可用工具集。 执行层 (actions)：负责将抽象的语义动作（如“Tap [x,y]”）转化为底层的 Android 机器指令。 配置与接口层 (config, examples)：提供灵活性，允许用户自定义模型参数、设备连接方式以及安全策略（如人工接管）。 2 核心编排逻辑解析 PhoneAgent 类是整个系统的指挥官。它实现了智能体的主循环（MainLoop）。系统提示词如图所示。\n2.1 初始化与依赖注入 依赖解耦：构造函数接收配置对象而非硬编码参数，体现了良好的工程实践。 ModelConfig：定义大模型的地址、APIKey、参数（Temperature 等）。 AgentConfig：定义运行时的行为，如最大步数 (max_steps)、语言 (lang)、设备 ID 等。 安全回调：引入 confirmation_callback 和 takeover_callback 是为了解决 AI 智能体在端侧落地时的安全性和鲁棒性问题。 敏感操作确认：防止 AI 误操作导致支付或删除数据。 人工接管：当遇到验证码、指纹解锁等 AI 难以处理的场景时，平滑地切换给人类。 2.2 run 方法：自动化的闭环 这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。\n">
 <title>Autoglm学习</title>
 
 <link rel='canonical' href='http://localhost:1313/post/autoglm%E5%AD%A6%E4%B9%A0/'>
 
 <link rel="stylesheet" href="/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css"><meta property='og:title' content="Autoglm学习">
-<meta property='og:description' content="">
+<meta property='og:description' content="Open-AutoGLM 源代码解析文档 这是关于 Open-AutoGLM 源代码的解析文档。从架构设计、核心类逻辑、提示词工程、动作执行层以及应用场景五个维度进行拆解。\n1 整体架构设计 1.1 系统概述 基于 AutoGLM（或其他视觉语言模型，VLM）构建，旨在通过自然语言指令自动化 Android 设备的操作。\n与传统的基于规则或脚本（如 Appium、UiAutomator）的自动化不同，并不依赖预先编写的控件 ID 或坐标路径。相反，它模仿人类的交互方式：\n看：通过 ADB 获取屏幕截图和当前应用信息。 想：利用多模态大模型分析当前界面，结合任务上下文进行规划。 做：将模型输出的决策转化为具体的 ADB 指令执行。 反馈：观察操作后的新界面，进入下一个循环。 1.2 核心模块划分 代码结构清晰地反映了智能体的分层架构：\n大脑层 (PhoneAgent)：负责任务编排、状态管理、与模型通信以及决策循环的控制。 认知层 (prompts_zh.py)：定义了智能体的世界观和操作手册。通过 System Prompt 约束模型的输出格式、逻辑推理方式以及可用工具集。 执行层 (actions)：负责将抽象的语义动作（如“Tap [x,y]”）转化为底层的 Android 机器指令。 配置与接口层 (config, examples)：提供灵活性，允许用户自定义模型参数、设备连接方式以及安全策略（如人工接管）。 2 核心编排逻辑解析 PhoneAgent 类是整个系统的指挥官。它实现了智能体的主循环（MainLoop）。系统提示词如图所示。\n2.1 初始化与依赖注入 依赖解耦：构造函数接收配置对象而非硬编码参数，体现了良好的工程实践。 ModelConfig：定义大模型的地址、APIKey、参数（Temperature 等）。 AgentConfig：定义运行时的行为，如最大步数 (max_steps)、语言 (lang)、设备 ID 等。 安全回调：引入 confirmation_callback 和 takeover_callback 是为了解决 AI 智能体在端侧落地时的安全性和鲁棒性问题。 敏感操作确认：防止 AI 误操作导致支付或删除数据。 人工接管：当遇到验证码、指纹解锁等 AI 难以处理的场景时，平滑地切换给人类。 2.2 run 方法：自动化的闭环 这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。\n">
 <meta property='og:url' content='http://localhost:1313/post/autoglm%E5%AD%A6%E4%B9%A0/'>
 <meta property='og:site_name' content='杨宗亿的个人博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-02-12T00:20:24&#43;08:00'/><meta property='article:modified_time' content='2026-02-12T00:20:24&#43;08:00'/>
 <meta name="twitter:title" content="Autoglm学习">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Open-AutoGLM 源代码解析文档 这是关于 Open-AutoGLM 源代码的解析文档。从架构设计、核心类逻辑、提示词工程、动作执行层以及应用场景五个维度进行拆解。\n1 整体架构设计 1.1 系统概述 基于 AutoGLM（或其他视觉语言模型，VLM）构建，旨在通过自然语言指令自动化 Android 设备的操作。\n与传统的基于规则或脚本（如 Appium、UiAutomator）的自动化不同，并不依赖预先编写的控件 ID 或坐标路径。相反，它模仿人类的交互方式：\n看：通过 ADB 获取屏幕截图和当前应用信息。 想：利用多模态大模型分析当前界面，结合任务上下文进行规划。 做：将模型输出的决策转化为具体的 ADB 指令执行。 反馈：观察操作后的新界面，进入下一个循环。 1.2 核心模块划分 代码结构清晰地反映了智能体的分层架构：\n大脑层 (PhoneAgent)：负责任务编排、状态管理、与模型通信以及决策循环的控制。 认知层 (prompts_zh.py)：定义了智能体的世界观和操作手册。通过 System Prompt 约束模型的输出格式、逻辑推理方式以及可用工具集。 执行层 (actions)：负责将抽象的语义动作（如“Tap [x,y]”）转化为底层的 Android 机器指令。 配置与接口层 (config, examples)：提供灵活性，允许用户自定义模型参数、设备连接方式以及安全策略（如人工接管）。 2 核心编排逻辑解析 PhoneAgent 类是整个系统的指挥官。它实现了智能体的主循环（MainLoop）。系统提示词如图所示。\n2.1 初始化与依赖注入 依赖解耦：构造函数接收配置对象而非硬编码参数，体现了良好的工程实践。 ModelConfig：定义大模型的地址、APIKey、参数（Temperature 等）。 AgentConfig：定义运行时的行为，如最大步数 (max_steps)、语言 (lang)、设备 ID 等。 安全回调：引入 confirmation_callback 和 takeover_callback 是为了解决 AI 智能体在端侧落地时的安全性和鲁棒性问题。 敏感操作确认：防止 AI 误操作导致支付或删除数据。 人工接管：当遇到验证码、指纹解锁等 AI 难以处理的场景时，平滑地切换给人类。 2.2 run 方法：自动化的闭环 这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。\n">
     </head>
     <body class="
     article-page
@@ -168,7 +168,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minutes read
+                    2 minutes read
                 </time>
             </div>
         
@@ -185,7 +185,157 @@
     <section class="article-content">
     
     
-    
+    <h1 id="open-autoglm-源代码解析文档">Open-AutoGLM 源代码解析文档
+</h1><p>这是关于 Open-AutoGLM 源代码的解析文档。从架构设计、核心类逻辑、提示词工程、动作执行层以及应用场景五个维度进行拆解。</p>
+<hr>
+<h2 id="1-整体架构设计">1 整体架构设计
+</h2><h3 id="11-系统概述">1.1 系统概述
+</h3><p>基于 <strong>AutoGLM</strong>（或其他视觉语言模型，VLM）构建，旨在通过自然语言指令自动化 Android 设备的操作。</p>
+<p>与传统的基于规则或脚本（如 Appium、UiAutomator）的自动化不同，并不依赖预先编写的控件 ID 或坐标路径。相反，它模仿人类的交互方式：</p>
+<ul>
+<li><strong>看</strong>：通过 ADB 获取屏幕截图和当前应用信息。</li>
+<li><strong>想</strong>：利用多模态大模型分析当前界面，结合任务上下文进行规划。</li>
+<li><strong>做</strong>：将模型输出的决策转化为具体的 ADB 指令执行。</li>
+<li><strong>反馈</strong>：观察操作后的新界面，进入下一个循环。</li>
+</ul>
+<h3 id="12-核心模块划分">1.2 核心模块划分
+</h3><p>代码结构清晰地反映了智能体的分层架构：</p>
+<ul>
+<li><strong>大脑层 (PhoneAgent)</strong>：负责任务编排、状态管理、与模型通信以及决策循环的控制。</li>
+<li><strong>认知层 (prompts_zh.py)</strong>：定义了智能体的世界观和操作手册。通过 System Prompt 约束模型的输出格式、逻辑推理方式以及可用工具集。</li>
+<li><strong>执行层 (actions)</strong>：负责将抽象的语义动作（如“Tap [x,y]”）转化为底层的 Android 机器指令。</li>
+<li><strong>配置与接口层 (config, examples)</strong>：提供灵活性，允许用户自定义模型参数、设备连接方式以及安全策略（如人工接管）。</li>
+</ul>
+<hr>
+<h2 id="2-核心编排逻辑解析">2 核心编排逻辑解析
+</h2><p><strong>PhoneAgent</strong> 类是整个系统的指挥官。它实现了智能体的主循环（MainLoop）。系统提示词如图所示。</p>
+<h3 id="21-初始化与依赖注入">2.1 初始化与依赖注入
+</h3><ul>
+<li><strong>依赖解耦</strong>：构造函数接收配置对象而非硬编码参数，体现了良好的工程实践。</li>
+<li><strong>ModelConfig</strong>：定义大模型的地址、APIKey、参数（Temperature 等）。</li>
+<li><strong>AgentConfig</strong>：定义运行时的行为，如最大步数 (<code>max_steps</code>)、语言 (<code>lang</code>)、设备 ID 等。</li>
+<li><strong>安全回调</strong>：引入 <code>confirmation_callback</code> 和 <code>takeover_callback</code> 是为了解决 AI 智能体在端侧落地时的安全性和鲁棒性问题。
+<ul>
+<li><strong>敏感操作确认</strong>：防止 AI 误操作导致支付或删除数据。</li>
+<li><strong>人工接管</strong>：当遇到验证码、指纹解锁等 AI 难以处理的场景时，平滑地切换给人类。</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-run-方法自动化的闭环">2.2 run 方法：自动化的闭环
+</h3><p>这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。</p>
+<h3 id="23-阶段-1环境感知">2.3 阶段 1：环境感知
+</h3><p>系统通过 ADB 截取当前屏幕流，并获取前台 App 的包名。
+<strong>关键点</strong>：这里不仅依靠视觉（截图），还辅助了系统信息（App 包名），这有助于模型判断当前是否在正确的应用中。</p>
+<h3 id="24-阶段-2-上下文构建">2.4 阶段 2 上下文构建
+</h3><ul>
+<li><strong>上下文窗口管理</strong>：多轮对话中，History 列表会越来越长。虽然代码中没有显式展示 Token 截断逻辑，但在后续代码中有一行 <code>MessageBuilder.remove_images_from_message(self._context[-1])</code>，这是一个极其重要的优化。</li>
+<li><strong>优化策略</strong>：在发送新请求前，将上一轮的用户消息中的图片移除（只保留文本描述）。为什么？因为对于决策当前步骤来说，历史截图的重要性远低于历史操作记录，而图片 Token 消耗巨大。保留所有历史图片会导致上下文迅速溢出显存或 Token 限制。</li>
+</ul>
+<h3 id="25-阶段-3-模型推理">2.5 阶段 3 模型推理
+</h3><p>调用 VLM（如 AutoGLM-Phone）。模型会接收到当前的屏幕截图、任务描述以及之前的操作历史，然后输出一段包含思维链（CoT）和动作指令的文本。模型严格输出 <code>do(...)</code> 或 <code>finish(...)</code>，能解析成 dict。</p>
+<h3 id="26-阶段-4-动作解析">2.6 阶段 4 动作解析
+</h3><p>模型输出的是字符串（例如 <code>do(action=&quot;Tap&quot;, element=[500,500])</code>），需要将其解析为结构化的 Python 字典。
+如果解析失败，代码采取了<strong>防御性编程 (Defensive Programming)</strong>，假设任务结束或出错。</p>
+<h3 id="27-阶段-5-动作执行">2.7 阶段 5 动作执行
+</h3><p>将解析后的动作交给 <code>ActionHandler</code>。这里传入屏幕宽高的原因在于，模型输出的通常是归一化坐标（0-1000），需要映射回设备的物理分辨率。</p>
+<h3 id="28-阶段-6-记忆更新与反馈">2.8 阶段 6 记忆更新与反馈
+</h3><p>将模型的思考过程和决策结果加入历史记录，形成闭环。这使得模型在下一步时知道自己刚才做了什么，为什么这么做。</p>
+<hr>
+<h2 id="3-认知层的构建">3 认知层的构建
+</h2><p>System Prompt 是智能体的灵魂，它定义了模型的思维方式和操作边界。</p>
+<h3 id="31-角色定义与思维链-cot">3.1 角色定义与思维链 (CoT)
+</h3><p><strong>思维链强制</strong>：通过标签，强制模型在输出动作前先进行推理。这对于复杂任务至关重要。例如，在点外卖时，模型需要先思考当前在购物车页面，但有非目标商品，然后才能生成先清空购物车的动作。如果没有这一步，模型容易直接生成点击购买，导致错误。</p>
+<h3 id="32-动作原语设计">3.2 动作原语设计
+</h3><p>Prompt 中定义了一套特定领域语言（DSL）：</p>
+<ul>
+<li><strong>导航类</strong>：
+<ul>
+<li><code>Launch(app=&quot;xxx&quot;)</code>：冷启动应用。比手动在桌面上找图标更稳健。</li>
+<li><code>Back()</code> / <code>Home()</code>：系统级导航。</li>
+<li><code>Swipe(start, end)</code>：处理列表滚动、页面切换。</li>
+</ul>
+</li>
+<li><strong>交互类</strong>：
+<ul>
+<li><code>Tap(element=[x,y])</code>：最基础的点击。坐标系定义为左上 (0,0) 到右下 (999,999)，这是为了适配不同分辨率的通用做法。</li>
+<li><code>Type(text=&quot;xxx&quot;)</code>：输入文本。</li>
+<li><code>Long Press</code> / <code>Double Tap</code>：处理复杂交互（如长按复制、双击点赞）。</li>
+</ul>
+</li>
+<li><strong>认知/元操作类</strong>：
+<ul>
+<li><code>Wait(duration)</code>：处理网络加载延迟。</li>
+<li><code>Note</code> / <code>Call_API</code>：用于信息提取任务（如总结当前页面的评论）。</li>
+<li><code>Take_over</code>：主动请求人工干预。</li>
+<li><code>Interact</code>：遇到歧义时询问用户。</li>
+</ul>
+</li>
+</ul>
+<h3 id="33-业务规则知识库">3.3 业务规则知识库
+</h3><p>Prompt 的后半部分包含了一组必须遵循的规则。这些规则是开发者将人类的领域知识蒸馏后注入给模型的：</p>
+<ul>
+<li><strong>鲁棒性规则</strong>：如果进入无关页面，先执行 Back、如果页面未加载，Wait 最多三次。这解决了自动化脚本最常见的卡死问题。</li>
+<li><strong>业务逻辑规则</strong>：小红书总结要筛选图文、外卖任务先清空购物车。这是针对特定 App 的优化，防止模型产生常识性错误。</li>
+<li><strong>容错规则</strong>：如果点击没生效…调整位置重试。教会模型进行自我修正。</li>
+</ul>
+<hr>
+<h2 id="4-执行层实现">4 执行层实现
+</h2><p><strong>ActionHandler</strong> 是连接 AI 大脑与 Android 系统的桥梁。它负责具体的指令落地。</p>
+<h3 id="41-安全的动作解析">4.1 安全的动作解析
+</h3><ul>
+<li><strong>安全性设计</strong>：代码明确避免使用 <code>eval()</code> 来解析模型返回的字符串，而是使用 Python 的 <strong>ast (Abstract Syntax Tree)</strong> 模块进行解析。</li>
+<li><strong>原因</strong>：如果直接使用 <code>eval()</code>，恶意注入或模型幻觉生成的代码（如 <code>os.system('rm -rf')</code>）可能会在宿主机器上执行。<code>ast.parse</code> 限制了仅能解析函数调用结构，极大地提高了安全性。</li>
+</ul>
+<h3 id="42-坐标转换机制">4.2 坐标转换机制
+</h3><p>模型输出的是 0-1000 的相对坐标。这种设计使得模型不需要关心具体的设备分辨率（1080p, 2k 等），提高了模型的泛化能力。Handler 负责将其映射回物理像素。</p>
+<h3 id="43-关键动作文本输入">4.3 关键动作文本输入
+</h3><ul>
+<li><strong>技术难点</strong>：Android 原生输入法（搜狗等）通常不接受 <code>adb shell input text</code> 指令发送 Unicode 字符（如中文），且弹出的软键盘会遮挡屏幕，影响视觉识别。</li>
+<li><strong>解决方案</strong>：代码通过临时切换到 <strong>ADB Keyboard</strong>（一种不可见、支持 Base64 输入的特殊输入法服务）来解决这个问题。输入完成后再切回用户原来的输入法，保证了用户体验的无感和输入的准确性。</li>
+</ul>
+<h3 id="44-关键动作点击与敏感操作">4.4 关键动作点击与敏感操作
+</h3><ul>
+<li><strong>人机协同</strong>：在执行点击前，检查动作是否包含 <code>message</code> 字段（通常在 System Prompt 中定义为涉及金钱、隐私时触发）。如果存在，则阻塞执行，调用回调函数等待人类确认。这是 AI Agent 走向实际应用的关键安全栅栏。</li>
+</ul>
+<h3 id="45-关键动作滑动">4.5 关键动作滑动
+</h3><p>处理滑动时，代码直接调用了 <code>adb.swipe</code>。这对于浏览长列表、查找元素（如 Prompt 规则中提到的找不到联系人尝试滑动）至关重要。</p>
+<hr>
+<h2 id="5-扩展性与应用场景分析">5 扩展性与应用场景分析
+</h2><h3 id="51-远程调试与多设备支持">5.1 远程调试与多设备支持
+</h3><p>在 <code>AgentConfig</code> 和 <code>ADBConnection</code> 中，我们看到了 <code>device_id</code> 的设计。
+这意味着该框架不仅支持 USB 连接的本地设备，也支持通过 TCP/IP (<code>adb connect ip:port</code>) 连接的远程设备（云手机、机房设备）。
+<strong>应用场景</strong>：云测平台、远程真机调试、批量群控（通过实例化多个 Agent，每个绑定不同的 <code>device_id</code>）。</p>
+<h3 id="52-异常处理与自我修正">5.2 异常处理与自我修正
+</h3><p>框架内置了多层容错机制：</p>
+<ol>
+<li><strong>模型层</strong>：Prompt 里的规则（<code>Retry</code>, <code>Back</code>）。</li>
+<li><strong>代码层</strong>：<code>try-except</code> 包裹模型请求和动作执行。</li>
+<li><strong>反馈层</strong>：如果动作执行失败，结果截图会反馈给模型，模型可以在下一轮通过视觉看到界面没变，从而推理出操作无效并尝试其他方案。</li>
+</ol>
+<h3 id="53-回调机制的灵活性">5.3 回调机制的灵活性
+</h3><p><code>examples/basic_usage.py</code> 展示了如何通过回调实现高级功能：
+<strong>人工接管 (Takeover)</strong>：当 AI 遇到登录验证码时，可以暂停，发消息给用户（如推送到 Slack/钉钉），用户在手机上操作完后按回车，AI 继续接管。这解决了全自动链路中最后一公里的难题。</p>
+<p>这相当于告诉上层 UI：现在需要用户来操作。典型场景：</p>
+<ul>
+<li>登录输入密码</li>
+<li>短信验证码</li>
+<li>图形验证码/滑块</li>
+<li>人脸/指纹认证</li>
+<li>支付确认（也可以用敏感确认做，但 takeover 更强调用户亲自操作）</li>
+</ul>
+<hr>
+<h2 id="6-本质是一个闭环控制系统">6 本质是一个闭环控制系统
+</h2><p>基于 AutoGLM 的手机端智能助理框架从工程角度看，本质是一个闭环控制系统：</p>
+<ol>
+<li><strong>感知</strong>：通过 ADB 截图拿到当前屏幕 (<code>get_screenshot()</code>)，再拿到前台 App 信息 (<code>get_current_app()</code>)。</li>
+<li><strong>表征</strong>：把任务 + 屏幕信息 + 截图包装成多模态消息 (<code>MessageBuilder.create_user_message(text, image_base64)</code>)。</li>
+<li><strong>决策/规划</strong>：把消息发给视觉语言模型 (<code>ModelClient.request(context)</code>)，模型输出下一步动作指令（字符串形式，如 <code>do(action=&quot;Tap&quot;, element=[...])</code> 或 <code>finish(message=&quot;...&quot;)</code>）。</li>
+<li><strong>解析</strong>：把模型输出转为结构化 dict (<code>parse_action()</code>)。</li>
+<li><strong>执行</strong>：把动作 dict 交给 <code>ActionHandler.execute()</code>，用 ADB 去真的点、滑、输入、返回、启动 App……</li>
+<li><strong>反馈</strong>：执行完再截图，进入下一轮，直到模型选择 <code>finish()</code> 或达到 <code>max_steps</code>。</li>
+</ol>
+<p>这个闭环非常像机器人领域的观察-思考-行动：不同点在于：这里的控制器是 VLM + 规则 prompt，执行器是 ADB。</p>
+
 </section>
 
 
