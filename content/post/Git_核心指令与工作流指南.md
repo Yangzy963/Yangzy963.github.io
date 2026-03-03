@@ -5,22 +5,22 @@ title = 'Git_核心指令与工作流指南'
 +++
     在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
 
-#一、基础配置
-	在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：
-Bash
+# 一、基础配置
+在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：
+```bash
 git config --global user.name "YourName"   -->>设置全局用户名
 
 git config --global user.email "yourmail@example.com"  -->>设置全局邮箱
 
 git config --list  -->>验证配置
-
-##二、核心工作流
+```
+## 二、核心工作流
 Git 的操作逻辑可以概括为三个主要区域的转换：工作区 --> 暂存区 --> 本地仓库
 1.初始化：使用 git init 使当前文件夹受 Git 管理。
 2.追踪：使用 git add . 将修改后的文件存入暂存区。
 3.提交：使用 git commit -m "commit message" 将暂存区内容永久保存到本地仓库。
 
-##三、常用指令速查
+## 三、常用指令速查
   起步与同步
      指令               		作用
 git clone <url>     	从远程仓库下载完整项目到本地
@@ -40,14 +40,14 @@ git stash                暂存工作
 git stash pop            回复暂存
 git reset --soft HEAD^   撤销提交
 
-##四、提交规范建议
+## 四、提交规范建议
      推荐格式---> 类型：描述
 	feat：新增功能
 	fix ：修复BUG
     docs: 文档修复
     refactor: 代码重构	
 
-##五、博客发布流程
+## 五、博客发布流程
 1. 本地预览与调试
  Bash 
  hugo server -D   -->  运行本地服务器（-D 参数确保草稿也能显示）

@@ -2,13 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2026-01-31T21:07:36+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2026-01-31T21:07:36+08:00</lastmod>
+    <lastmod>2026-03-03T15:54:36+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/skills/</loc>
+    <lastmod>2026-03-03T15:54:36+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2026-03-03T15:54:36+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/autoglm_add_skills/</loc>
+    <lastmod>2026-02-26T23:16:52+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/autoglm%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2026-02-12T00:20:24+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/skills%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2026-02-10T00:37:32+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/skills-python/</loc>
+    <lastmod>2026-02-05T20:57:47+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/httprunnerv5ai%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%99%A8%E4%BA%BAwindows%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%BF%90%E8%A1%8C%E5%AE%9E%E5%BD%95/</loc>
+    <lastmod>2026-02-02T17:30:28+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2026-01-31T21:07:36+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/draft/</loc>

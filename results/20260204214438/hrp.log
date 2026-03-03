@@ -1,0 +1,11 @@
+{"level":"info","logFilePath":"D:\\hugo\\hugo_extended_0.154.5_windows-amd64\\my_blog\\results\\20260204214438\\hrp.log","time":"2026-02-04T21:44:38.032+0800","message":"log with colorized console and file output"}
+{"level":"info","failfast":true,"time":"2026-02-04T21:44:38.032+0800","message":"[init] SetFailfast"}
+{"level":"info","saveTests":false,"time":"2026-02-04T21:44:38.032+0800","message":"[init] SetSaveTests"}
+{"level":"info","timeout_seconds":3600,"time":"2026-02-04T21:44:38.032+0800","message":"[init] SetCaseTimeout"}
+{"level":"info","time":"2026-02-04T21:44:38.033+0800","message":"[init] SetRequestsLogOn"}
+{"level":"info","hrp_version":"v5.0.0-250818","time":"2026-02-04T21:44:38.033+0800","message":"start running"}
+{"level":"info","path":"game_2048.json","time":"2026-02-04T21:44:38.033+0800","message":"load file"}
+{"level":"error","error":"open D:\\hugo\\hugo_extended_0.154.5_windows-amd64\\my_blog\\game_2048.json: The system cannot find the file specified.","time":"2026-02-04T21:44:38.034+0800","message":"read file failed"}
+{"level":"warn","error":"read file failed: open D:\\hugo\\hugo_extended_0.154.5_windows-amd64\\my_blog\\game_2048.json: The system cannot find the file specified.: load file error","path":"game_2048.json","time":"2026-02-04T21:44:38.034+0800","message":"load testcase failed"}
+{"level":"error","error":"test case count less than 1 or parse error","time":"2026-02-04T21:44:38.035+0800","message":"failed to load testcases"}
+{"level":"info","duration(s)":0,"exitCode":1,"time":"2026-02-04T21:44:38.035+0800","message":"run testcase finished"}
