@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 杨宗亿的个人博客</title><link>https://yangzongyi.cn/post/</link><description>Recent content in Posts on 杨宗亿的个人博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 31 Jan 2026 21:07:36 +0800</lastBuildDate><atom:link href="https://yangzongyi.cn/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown写作快速上手</title><link>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</link><pubDate>Sat, 31 Jan 2026 21:07:36 +0800</pubDate><guid>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</guid><description>&lt;p&gt;Markdown 是一种轻量级标记语言，它通过简单的符号实现排版，让作者专注于内容而非格式。本文将为你系统性地梳理常用的 Markdown 写作技巧。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 杨宗亿的个人博客</title><link>https://yangzongyi.cn/post/</link><description>Recent content in Posts on 杨宗亿的个人博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 03 Mar 2026 15:54:36 +0800</lastBuildDate><atom:link href="https://yangzongyi.cn/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Skills</title><link>https://yangzongyi.cn/post/skills/</link><pubDate>Tue, 03 Mar 2026 15:54:36 +0800</pubDate><guid>https://yangzongyi.cn/post/skills/</guid><description>&lt;h1 id="agent-进化论一文读懂让-ai-真正干活的-skills-机制"&gt;Agent 进化论：一文读懂让 AI 真正“干活”的 Skills 机制
+&lt;/h1&gt;&lt;p&gt;在探索大语言模型（LLM）应用的过程中，我们经常会遇到这样的瓶颈：即使使用了最先进的模型（如 GPT-4o 或 Claude 3.5），Agent 在处理复杂任务时依然会出现“不听话”、“逻辑混乱”或者“幻觉”严重的问题。&lt;/p&gt;
+&lt;p&gt;单纯依靠 &lt;strong&gt;Prompt Engineering&lt;/strong&gt; 已经无法满足构建复杂应用的需求。这时候，&lt;strong&gt;Skills机制&lt;/strong&gt;应运而生。它是 Agent 从“聊天机器人”进化为“超级员工”的关键催化剂。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-什么是-skills"&gt;1. 什么是 Skills？
+&lt;/h2&gt;&lt;p&gt;通俗来说，如果把 Agent 比作一个拥有高智商的&lt;strong&gt;大脑&lt;/strong&gt;，那么 Skills 就是这个大脑可以随时调用的**“专业工具箱”&lt;strong&gt;或&lt;/strong&gt;“武功秘籍”**。&lt;/p&gt;
+&lt;p&gt;它不仅仅是一段代码，而是一个标准化的封装结构。一个典型的 Skill 通常包含三个核心部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;说明书 (Instruction/Docs)&lt;/strong&gt;：告诉 AI 怎么做，有哪些步骤。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具脚本 (Scripts/Tools)&lt;/strong&gt;：实际执行任务的代码（如 Python 脚本）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参考资料 (References)&lt;/strong&gt;：必要的知识库或数据结构。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="2-核心原理渐进式加载-progressive-loading"&gt;2. 核心原理：渐进式加载 (Progressive Loading)
+&lt;/h2&gt;&lt;p&gt;Skills 之所以高效，是因为它解决了一个核心痛点：&lt;strong&gt;上下文窗口（Context Window）的限制&lt;/strong&gt;。我们不可能把所有的规则、代码和文档一次性塞给 AI。&lt;/p&gt;
+&lt;p&gt;Skills 采用了一种巧妙的**“三级加载”**机制：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;加载层级&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;名称&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;触发时机&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;作用&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Level 1&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;元数据 (Metadata)&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;随时待命&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Skill 的“名片”，包含名字和简介。Agent 据此判断是否需要使用该技能。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Level 2&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;操作手册 (Instruction)&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;触发加载&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;一旦决定使用，Agent 才会读取详细的 Markdown 手册，节省上下文空间。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Level 3&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;执行代码 (Implementation)&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;幕后运行&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;实际的脚本或 API 调用。在沙盒中运行，AI 只负责调用并获取结果。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="3-为什么我们需要-skills"&gt;3. 为什么我们需要 Skills？
+&lt;/h2&gt;&lt;p&gt;相比于传统的 Prompt 或简单的 Function Calling，Skills 带来了三个质变：&lt;/p&gt;</description></item><item><title>Markdown写作快速上手</title><link>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</link><pubDate>Sat, 31 Jan 2026 21:07:36 +0800</pubDate><guid>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</guid><description>&lt;p&gt;Markdown 是一种轻量级标记语言，它通过简单的符号实现排版，让作者专注于内容而非格式。本文将为你系统性地梳理常用的 Markdown 写作技巧。&lt;/p&gt;
 &lt;h2 id="一-标题与文本样式"&gt;一、 标题与文本样式
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;多级标题
@@ -50,106 +98,22 @@
 在段落开头使用 &amp;gt; :&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这是一段引用文字&lt;/p&gt;</description></item><item><title>draft</title><link>https://yangzongyi.cn/post/draft/</link><pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate><guid>https://yangzongyi.cn/post/draft/</guid><description>&lt;h1 id="标题1"&gt;标题1
-&lt;/h1&gt;&lt;p&gt;你&lt;/p&gt;
-&lt;h2 id="标题2"&gt;标题2
-&lt;/h2&gt;&lt;p&gt;你&lt;/p&gt;
-&lt;h3 id="标题3"&gt;标题3
-&lt;/h3&gt;&lt;p&gt;你&lt;/p&gt;
-&lt;h6 id="标题6"&gt;标题6
-&lt;/h6&gt;&lt;blockquote&gt;
-&lt;p&gt;这是一段引用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;有序列表：&lt;/p&gt;
-&lt;p&gt;把大象放进冰箱：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;打开冰箱&lt;/li&gt;
-&lt;li&gt;塞进去&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;无序列表：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;私天地&lt;/li&gt;
-&lt;li&gt;杨&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;哈哈哈哈哈&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;明天要做的事情：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input checked="" disabled="" type="checkbox"&gt; 吃饭&lt;/li&gt;
-&lt;li&gt;&lt;input checked="" disabled="" type="checkbox"&gt; 睡觉&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;代码块:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;int main() --&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	return 0;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;数学公式：
-markdown格式&lt;/p&gt;
-&lt;p&gt;表格：&lt;/p&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th style="text-align: left"&gt;姓名&lt;/th&gt;
- &lt;th style="text-align: right"&gt;年龄&lt;/th&gt;
- &lt;th style="text-align: center"&gt;日期&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td style="text-align: left"&gt;杨&lt;/td&gt;
- &lt;td style="text-align: right"&gt;19&lt;/td&gt;
- &lt;td style="text-align: center"&gt;2033&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td style="text-align: left"&gt;李白&lt;/td&gt;
- &lt;td style="text-align: right"&gt;449&lt;/td&gt;
- &lt;td style="text-align: center"&gt;203333&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;脚注:&lt;br&gt;
-伦理&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;横线：&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;hahahhhhhh&lt;/p&gt;
-&lt;p&gt;链接：&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://baidu.com%27%e4%b8%80%e4%b8%aa%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%27" target="_blank" rel="noopener"
- &gt;百度&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;引用链接：&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://baidu.com" title="一个搜索引擎"
- target="_blank" rel="noopener"
- &gt;百度&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;请参考&lt;a class="link" href="#%e6%a0%87%e9%a2%981" &gt;标题1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="http://yangzongyi.cn" target="_blank" rel="noopener"
- &gt;http://yangzongyi.cn&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="http://yangzongyi.cn" target="_blank" rel="noopener"
- &gt;http://yangzongyi.cn&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;u&gt;下划线&lt;/u&gt;&lt;/p&gt;
-&lt;p&gt;表情符号：参考emoji国际表情通用代码&lt;/p&gt;
-&lt;p&gt;:smile:&lt;/p&gt;
-&lt;p&gt;下标：&lt;/p&gt;
-&lt;p&gt;H&lt;del&gt;2&lt;/del&gt;O&lt;/p&gt;
-&lt;p&gt;高亮：&lt;/p&gt;
-&lt;p&gt;==这是一段高亮文字==&lt;/p&gt;
-&lt;p&gt;&lt;mark&gt;这是一段高亮&lt;/mark&gt;。&lt;/p&gt;</description></item><item><title>Git_核心指令与工作流指南</title><link>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate><guid>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</guid><description>&lt;pre&gt;&lt;code&gt;在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
+&lt;p&gt;这是一段引用文字&lt;/p&gt;</description></item><item><title>Git_核心指令与工作流指南</title><link>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate><guid>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</guid><description>&lt;pre&gt;&lt;code&gt;在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;#一、基础配置
-在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：
-Bash
-git config &amp;ndash;global user.name &amp;ldquo;YourName&amp;rdquo; &amp;ndash;&amp;raquo;设置全局用户名&lt;/p&gt;
-&lt;p&gt;git config &amp;ndash;global user.email &amp;ldquo;&lt;a class="link" href="mailto:yourmail@example.com" &gt;yourmail@example.com&lt;/a&gt;&amp;rdquo; &amp;ndash;&amp;raquo;设置全局邮箱&lt;/p&gt;
-&lt;p&gt;git config &amp;ndash;list &amp;ndash;&amp;raquo;验证配置&lt;/p&gt;
-&lt;p&gt;##二、核心工作流
-Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &amp;ndash;&amp;gt; 暂存区 &amp;ndash;&amp;gt; 本地仓库
+&lt;h1 id="一基础配置"&gt;一、基础配置
+&lt;/h1&gt;&lt;p&gt;在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.name &lt;span style="color:#e6db74"&gt;&amp;#34;YourName&amp;#34;&lt;/span&gt; --&amp;gt;&amp;gt;设置全局用户名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.email &lt;span style="color:#e6db74"&gt;&amp;#34;yourmail@example.com&amp;#34;&lt;/span&gt; --&amp;gt;&amp;gt;设置全局邮箱
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --list --&amp;gt;&amp;gt;验证配置
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二核心工作流"&gt;二、核心工作流
+&lt;/h2&gt;&lt;p&gt;Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &amp;ndash;&amp;gt; 暂存区 &amp;ndash;&amp;gt; 本地仓库
 1.初始化：使用 git init 使当前文件夹受 Git 管理。
 2.追踪：使用 git add . 将修改后的文件存入暂存区。
 3.提交：使用 git commit -m &amp;ldquo;commit message&amp;rdquo; 将暂存区内容永久保存到本地仓库。&lt;/p&gt;
-&lt;p&gt;##三、常用指令速查
-起步与同步
+&lt;h2 id="三常用指令速查"&gt;三、常用指令速查
+&lt;/h2&gt;&lt;p&gt;起步与同步
 指令 		作用
 git clone &lt;url&gt; 	从远程仓库下载完整项目到本地
 git status 	查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存）
