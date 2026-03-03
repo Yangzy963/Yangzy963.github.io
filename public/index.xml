@@ -6,10 +6,10 @@
         <description>Recent content on 杨宗亿的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 03 Mar 2026 15:54:36 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Mar 2026 15:54:36 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Skills</title>
         <link>http://localhost:1313/post/skills/</link>
-        <pubDate>Tue, 03 Mar 2026 15:54:36 +0800</pubDate>
+        <pubDate>Sun, 01 Mar 2026 15:54:36 +0800</pubDate>
         
         <guid>http://localhost:1313/post/skills/</guid>
         <description>&lt;h1 id=&#34;agent-进化论一文读懂让-ai-真正干活的-skills-机制&#34;&gt;Agent 进化论：一文读懂让 AI 真正“干活”的 Skills 机制
@@ -95,7 +95,157 @@
         <pubDate>Thu, 12 Feb 2026 00:20:24 +0800</pubDate>
         
         <guid>http://localhost:1313/post/autoglm%E5%AD%A6%E4%B9%A0/</guid>
-        <description></description>
+        <description>&lt;h1 id=&#34;open-autoglm-源代码解析文档&#34;&gt;Open-AutoGLM 源代码解析文档
+&lt;/h1&gt;&lt;p&gt;这是关于 Open-AutoGLM 源代码的解析文档。从架构设计、核心类逻辑、提示词工程、动作执行层以及应用场景五个维度进行拆解。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-整体架构设计&#34;&gt;1 整体架构设计
+&lt;/h2&gt;&lt;h3 id=&#34;11-系统概述&#34;&gt;1.1 系统概述
+&lt;/h3&gt;&lt;p&gt;基于 &lt;strong&gt;AutoGLM&lt;/strong&gt;（或其他视觉语言模型，VLM）构建，旨在通过自然语言指令自动化 Android 设备的操作。&lt;/p&gt;
+&lt;p&gt;与传统的基于规则或脚本（如 Appium、UiAutomator）的自动化不同，并不依赖预先编写的控件 ID 或坐标路径。相反，它模仿人类的交互方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;看&lt;/strong&gt;：通过 ADB 获取屏幕截图和当前应用信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;想&lt;/strong&gt;：利用多模态大模型分析当前界面，结合任务上下文进行规划。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;做&lt;/strong&gt;：将模型输出的决策转化为具体的 ADB 指令执行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反馈&lt;/strong&gt;：观察操作后的新界面，进入下一个循环。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-核心模块划分&#34;&gt;1.2 核心模块划分
+&lt;/h3&gt;&lt;p&gt;代码结构清晰地反映了智能体的分层架构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;大脑层 (PhoneAgent)&lt;/strong&gt;：负责任务编排、状态管理、与模型通信以及决策循环的控制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;认知层 (prompts_zh.py)&lt;/strong&gt;：定义了智能体的世界观和操作手册。通过 System Prompt 约束模型的输出格式、逻辑推理方式以及可用工具集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行层 (actions)&lt;/strong&gt;：负责将抽象的语义动作（如“Tap [x,y]”）转化为底层的 Android 机器指令。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置与接口层 (config, examples)&lt;/strong&gt;：提供灵活性，允许用户自定义模型参数、设备连接方式以及安全策略（如人工接管）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-核心编排逻辑解析&#34;&gt;2 核心编排逻辑解析
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;PhoneAgent&lt;/strong&gt; 类是整个系统的指挥官。它实现了智能体的主循环（MainLoop）。系统提示词如图所示。&lt;/p&gt;
+&lt;h3 id=&#34;21-初始化与依赖注入&#34;&gt;2.1 初始化与依赖注入
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;依赖解耦&lt;/strong&gt;：构造函数接收配置对象而非硬编码参数，体现了良好的工程实践。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ModelConfig&lt;/strong&gt;：定义大模型的地址、APIKey、参数（Temperature 等）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AgentConfig&lt;/strong&gt;：定义运行时的行为，如最大步数 (&lt;code&gt;max_steps&lt;/code&gt;)、语言 (&lt;code&gt;lang&lt;/code&gt;)、设备 ID 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全回调&lt;/strong&gt;：引入 &lt;code&gt;confirmation_callback&lt;/code&gt; 和 &lt;code&gt;takeover_callback&lt;/code&gt; 是为了解决 AI 智能体在端侧落地时的安全性和鲁棒性问题。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;敏感操作确认&lt;/strong&gt;：防止 AI 误操作导致支付或删除数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;人工接管&lt;/strong&gt;：当遇到验证码、指纹解锁等 AI 难以处理的场景时，平滑地切换给人类。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-run-方法自动化的闭环&#34;&gt;2.2 run 方法：自动化的闭环
+&lt;/h3&gt;&lt;p&gt;这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。&lt;/p&gt;
+&lt;h3 id=&#34;23-阶段-1环境感知&#34;&gt;2.3 阶段 1：环境感知
+&lt;/h3&gt;&lt;p&gt;系统通过 ADB 截取当前屏幕流，并获取前台 App 的包名。
+&lt;strong&gt;关键点&lt;/strong&gt;：这里不仅依靠视觉（截图），还辅助了系统信息（App 包名），这有助于模型判断当前是否在正确的应用中。&lt;/p&gt;
+&lt;h3 id=&#34;24-阶段-2-上下文构建&#34;&gt;2.4 阶段 2 上下文构建
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;上下文窗口管理&lt;/strong&gt;：多轮对话中，History 列表会越来越长。虽然代码中没有显式展示 Token 截断逻辑，但在后续代码中有一行 &lt;code&gt;MessageBuilder.remove_images_from_message(self._context[-1])&lt;/code&gt;，这是一个极其重要的优化。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化策略&lt;/strong&gt;：在发送新请求前，将上一轮的用户消息中的图片移除（只保留文本描述）。为什么？因为对于决策当前步骤来说，历史截图的重要性远低于历史操作记录，而图片 Token 消耗巨大。保留所有历史图片会导致上下文迅速溢出显存或 Token 限制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;25-阶段-3-模型推理&#34;&gt;2.5 阶段 3 模型推理
+&lt;/h3&gt;&lt;p&gt;调用 VLM（如 AutoGLM-Phone）。模型会接收到当前的屏幕截图、任务描述以及之前的操作历史，然后输出一段包含思维链（CoT）和动作指令的文本。模型严格输出 &lt;code&gt;do(...)&lt;/code&gt; 或 &lt;code&gt;finish(...)&lt;/code&gt;，能解析成 dict。&lt;/p&gt;
+&lt;h3 id=&#34;26-阶段-4-动作解析&#34;&gt;2.6 阶段 4 动作解析
+&lt;/h3&gt;&lt;p&gt;模型输出的是字符串（例如 &lt;code&gt;do(action=&amp;quot;Tap&amp;quot;, element=[500,500])&lt;/code&gt;），需要将其解析为结构化的 Python 字典。
+如果解析失败，代码采取了&lt;strong&gt;防御性编程 (Defensive Programming)&lt;/strong&gt;，假设任务结束或出错。&lt;/p&gt;
+&lt;h3 id=&#34;27-阶段-5-动作执行&#34;&gt;2.7 阶段 5 动作执行
+&lt;/h3&gt;&lt;p&gt;将解析后的动作交给 &lt;code&gt;ActionHandler&lt;/code&gt;。这里传入屏幕宽高的原因在于，模型输出的通常是归一化坐标（0-1000），需要映射回设备的物理分辨率。&lt;/p&gt;
+&lt;h3 id=&#34;28-阶段-6-记忆更新与反馈&#34;&gt;2.8 阶段 6 记忆更新与反馈
+&lt;/h3&gt;&lt;p&gt;将模型的思考过程和决策结果加入历史记录，形成闭环。这使得模型在下一步时知道自己刚才做了什么，为什么这么做。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-认知层的构建&#34;&gt;3 认知层的构建
+&lt;/h2&gt;&lt;p&gt;System Prompt 是智能体的灵魂，它定义了模型的思维方式和操作边界。&lt;/p&gt;
+&lt;h3 id=&#34;31-角色定义与思维链-cot&#34;&gt;3.1 角色定义与思维链 (CoT)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;思维链强制&lt;/strong&gt;：通过标签，强制模型在输出动作前先进行推理。这对于复杂任务至关重要。例如，在点外卖时，模型需要先思考当前在购物车页面，但有非目标商品，然后才能生成先清空购物车的动作。如果没有这一步，模型容易直接生成点击购买，导致错误。&lt;/p&gt;
+&lt;h3 id=&#34;32-动作原语设计&#34;&gt;3.2 动作原语设计
+&lt;/h3&gt;&lt;p&gt;Prompt 中定义了一套特定领域语言（DSL）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;导航类&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Launch(app=&amp;quot;xxx&amp;quot;)&lt;/code&gt;：冷启动应用。比手动在桌面上找图标更稳健。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Back()&lt;/code&gt; / &lt;code&gt;Home()&lt;/code&gt;：系统级导航。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Swipe(start, end)&lt;/code&gt;：处理列表滚动、页面切换。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交互类&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Tap(element=[x,y])&lt;/code&gt;：最基础的点击。坐标系定义为左上 (0,0) 到右下 (999,999)，这是为了适配不同分辨率的通用做法。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Type(text=&amp;quot;xxx&amp;quot;)&lt;/code&gt;：输入文本。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Long Press&lt;/code&gt; / &lt;code&gt;Double Tap&lt;/code&gt;：处理复杂交互（如长按复制、双击点赞）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;认知/元操作类&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Wait(duration)&lt;/code&gt;：处理网络加载延迟。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Note&lt;/code&gt; / &lt;code&gt;Call_API&lt;/code&gt;：用于信息提取任务（如总结当前页面的评论）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Take_over&lt;/code&gt;：主动请求人工干预。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Interact&lt;/code&gt;：遇到歧义时询问用户。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;33-业务规则知识库&#34;&gt;3.3 业务规则知识库
+&lt;/h3&gt;&lt;p&gt;Prompt 的后半部分包含了一组必须遵循的规则。这些规则是开发者将人类的领域知识蒸馏后注入给模型的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;鲁棒性规则&lt;/strong&gt;：如果进入无关页面，先执行 Back、如果页面未加载，Wait 最多三次。这解决了自动化脚本最常见的卡死问题。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;业务逻辑规则&lt;/strong&gt;：小红书总结要筛选图文、外卖任务先清空购物车。这是针对特定 App 的优化，防止模型产生常识性错误。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;容错规则&lt;/strong&gt;：如果点击没生效…调整位置重试。教会模型进行自我修正。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-执行层实现&#34;&gt;4 执行层实现
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;ActionHandler&lt;/strong&gt; 是连接 AI 大脑与 Android 系统的桥梁。它负责具体的指令落地。&lt;/p&gt;
+&lt;h3 id=&#34;41-安全的动作解析&#34;&gt;4.1 安全的动作解析
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;安全性设计&lt;/strong&gt;：代码明确避免使用 &lt;code&gt;eval()&lt;/code&gt; 来解析模型返回的字符串，而是使用 Python 的 &lt;strong&gt;ast (Abstract Syntax Tree)&lt;/strong&gt; 模块进行解析。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;原因&lt;/strong&gt;：如果直接使用 &lt;code&gt;eval()&lt;/code&gt;，恶意注入或模型幻觉生成的代码（如 &lt;code&gt;os.system(&#39;rm -rf&#39;)&lt;/code&gt;）可能会在宿主机器上执行。&lt;code&gt;ast.parse&lt;/code&gt; 限制了仅能解析函数调用结构，极大地提高了安全性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;42-坐标转换机制&#34;&gt;4.2 坐标转换机制
+&lt;/h3&gt;&lt;p&gt;模型输出的是 0-1000 的相对坐标。这种设计使得模型不需要关心具体的设备分辨率（1080p, 2k 等），提高了模型的泛化能力。Handler 负责将其映射回物理像素。&lt;/p&gt;
+&lt;h3 id=&#34;43-关键动作文本输入&#34;&gt;4.3 关键动作文本输入
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;技术难点&lt;/strong&gt;：Android 原生输入法（搜狗等）通常不接受 &lt;code&gt;adb shell input text&lt;/code&gt; 指令发送 Unicode 字符（如中文），且弹出的软键盘会遮挡屏幕，影响视觉识别。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;：代码通过临时切换到 &lt;strong&gt;ADB Keyboard&lt;/strong&gt;（一种不可见、支持 Base64 输入的特殊输入法服务）来解决这个问题。输入完成后再切回用户原来的输入法，保证了用户体验的无感和输入的准确性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;44-关键动作点击与敏感操作&#34;&gt;4.4 关键动作点击与敏感操作
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;人机协同&lt;/strong&gt;：在执行点击前，检查动作是否包含 &lt;code&gt;message&lt;/code&gt; 字段（通常在 System Prompt 中定义为涉及金钱、隐私时触发）。如果存在，则阻塞执行，调用回调函数等待人类确认。这是 AI Agent 走向实际应用的关键安全栅栏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;45-关键动作滑动&#34;&gt;4.5 关键动作滑动
+&lt;/h3&gt;&lt;p&gt;处理滑动时，代码直接调用了 &lt;code&gt;adb.swipe&lt;/code&gt;。这对于浏览长列表、查找元素（如 Prompt 规则中提到的找不到联系人尝试滑动）至关重要。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-扩展性与应用场景分析&#34;&gt;5 扩展性与应用场景分析
+&lt;/h2&gt;&lt;h3 id=&#34;51-远程调试与多设备支持&#34;&gt;5.1 远程调试与多设备支持
+&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;AgentConfig&lt;/code&gt; 和 &lt;code&gt;ADBConnection&lt;/code&gt; 中，我们看到了 &lt;code&gt;device_id&lt;/code&gt; 的设计。
+这意味着该框架不仅支持 USB 连接的本地设备，也支持通过 TCP/IP (&lt;code&gt;adb connect ip:port&lt;/code&gt;) 连接的远程设备（云手机、机房设备）。
+&lt;strong&gt;应用场景&lt;/strong&gt;：云测平台、远程真机调试、批量群控（通过实例化多个 Agent，每个绑定不同的 &lt;code&gt;device_id&lt;/code&gt;）。&lt;/p&gt;
+&lt;h3 id=&#34;52-异常处理与自我修正&#34;&gt;5.2 异常处理与自我修正
+&lt;/h3&gt;&lt;p&gt;框架内置了多层容错机制：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;模型层&lt;/strong&gt;：Prompt 里的规则（&lt;code&gt;Retry&lt;/code&gt;, &lt;code&gt;Back&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代码层&lt;/strong&gt;：&lt;code&gt;try-except&lt;/code&gt; 包裹模型请求和动作执行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反馈层&lt;/strong&gt;：如果动作执行失败，结果截图会反馈给模型，模型可以在下一轮通过视觉看到界面没变，从而推理出操作无效并尝试其他方案。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;53-回调机制的灵活性&#34;&gt;5.3 回调机制的灵活性
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;examples/basic_usage.py&lt;/code&gt; 展示了如何通过回调实现高级功能：
+&lt;strong&gt;人工接管 (Takeover)&lt;/strong&gt;：当 AI 遇到登录验证码时，可以暂停，发消息给用户（如推送到 Slack/钉钉），用户在手机上操作完后按回车，AI 继续接管。这解决了全自动链路中最后一公里的难题。&lt;/p&gt;
+&lt;p&gt;这相当于告诉上层 UI：现在需要用户来操作。典型场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登录输入密码&lt;/li&gt;
+&lt;li&gt;短信验证码&lt;/li&gt;
+&lt;li&gt;图形验证码/滑块&lt;/li&gt;
+&lt;li&gt;人脸/指纹认证&lt;/li&gt;
+&lt;li&gt;支付确认（也可以用敏感确认做，但 takeover 更强调用户亲自操作）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6-本质是一个闭环控制系统&#34;&gt;6 本质是一个闭环控制系统
+&lt;/h2&gt;&lt;p&gt;基于 AutoGLM 的手机端智能助理框架从工程角度看，本质是一个闭环控制系统：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;感知&lt;/strong&gt;：通过 ADB 截图拿到当前屏幕 (&lt;code&gt;get_screenshot()&lt;/code&gt;)，再拿到前台 App 信息 (&lt;code&gt;get_current_app()&lt;/code&gt;)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表征&lt;/strong&gt;：把任务 + 屏幕信息 + 截图包装成多模态消息 (&lt;code&gt;MessageBuilder.create_user_message(text, image_base64)&lt;/code&gt;)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;决策/规划&lt;/strong&gt;：把消息发给视觉语言模型 (&lt;code&gt;ModelClient.request(context)&lt;/code&gt;)，模型输出下一步动作指令（字符串形式，如 &lt;code&gt;do(action=&amp;quot;Tap&amp;quot;, element=[...])&lt;/code&gt; 或 &lt;code&gt;finish(message=&amp;quot;...&amp;quot;)&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解析&lt;/strong&gt;：把模型输出转为结构化 dict (&lt;code&gt;parse_action()&lt;/code&gt;)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行&lt;/strong&gt;：把动作 dict 交给 &lt;code&gt;ActionHandler.execute()&lt;/code&gt;，用 ADB 去真的点、滑、输入、返回、启动 App……&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反馈&lt;/strong&gt;：执行完再截图，进入下一轮，直到模型选择 &lt;code&gt;finish()&lt;/code&gt; 或达到 &lt;code&gt;max_steps&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这个闭环非常像机器人领域的观察-思考-行动：不同点在于：这里的控制器是 VLM + 规则 prompt，执行器是 ADB。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>Skills使用</title>
