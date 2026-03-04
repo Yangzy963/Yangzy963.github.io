@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 杨宗亿的个人博客</title><link>https://yangzongyi.cn/post/</link><description>Recent content in Posts on 杨宗亿的个人博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Mar 2026 15:54:36 +0800</lastBuildDate><atom:link href="https://yangzongyi.cn/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Skills</title><link>https://yangzongyi.cn/post/skills/</link><pubDate>Sun, 01 Mar 2026 15:54:36 +0800</pubDate><guid>https://yangzongyi.cn/post/skills/</guid><description>&lt;h1 id="agent-进化论一文读懂让-ai-真正干活的-skills-机制"&gt;Agent 进化论：一文读懂让 AI 真正“干活”的 Skills 机制
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 杨宗亿的个人博客</title><link>https://yangzongyi.cn/post/</link><description>Recent content in Posts on 杨宗亿的个人博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 14 Feb 2026 15:54:36 +0800</lastBuildDate><atom:link href="https://yangzongyi.cn/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Skill</title><link>https://yangzongyi.cn/post/skills/</link><pubDate>Sat, 14 Feb 2026 15:54:36 +0800</pubDate><guid>https://yangzongyi.cn/post/skills/</guid><description>&lt;h1 id="agent-进化论一文读懂让-ai-真正干活的-skills-机制"&gt;Agent 进化论：一文读懂让 AI 真正“干活”的 Skills 机制
 &lt;/h1&gt;&lt;p&gt;在探索大语言模型（LLM）应用的过程中，我们经常会遇到这样的瓶颈：即使使用了最先进的模型（如 GPT-4o 或 Claude 3.5），Agent 在处理复杂任务时依然会出现“不听话”、“逻辑混乱”或者“幻觉”严重的问题。&lt;/p&gt;
 &lt;p&gt;单纯依靠 &lt;strong&gt;Prompt Engineering&lt;/strong&gt; 已经无法满足构建复杂应用的需求。这时候，&lt;strong&gt;Skills机制&lt;/strong&gt;应运而生。它是 Agent 从“聊天机器人”进化为“超级员工”的关键催化剂。&lt;/p&gt;
 &lt;hr&gt;
@@ -83,7 +83,32 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="22-run-方法自动化的闭环"&gt;2.2 run 方法：自动化的闭环
-&lt;/h3&gt;&lt;p&gt;这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。&lt;/p&gt;</description></item><item><title>Markdown写作快速上手</title><link>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</link><pubDate>Sat, 31 Jan 2026 21:07:36 +0800</pubDate><guid>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</guid><description>&lt;p&gt;Markdown 是一种轻量级标记语言，它通过简单的符号实现排版，让作者专注于内容而非格式。本文将为你系统性地梳理常用的 Markdown 写作技巧。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;这个循环本质上是一个状态机的推演过程。智能体不断地将（当前状态 + 历史记忆）映射到（下一步动作），直到达到 Finished 状态。&lt;/p&gt;</description></item><item><title>Git_核心指令与工作流指南</title><link>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate><guid>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</guid><description>&lt;pre&gt;&lt;code&gt;在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="一基础配置"&gt;一、基础配置
+&lt;/h1&gt;&lt;p&gt;在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.name &lt;span style="color:#e6db74"&gt;&amp;#34;YourName&amp;#34;&lt;/span&gt; --&amp;gt;&amp;gt;设置全局用户名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.email &lt;span style="color:#e6db74"&gt;&amp;#34;yourmail@example.com&amp;#34;&lt;/span&gt; --&amp;gt;&amp;gt;设置全局邮箱
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --list --&amp;gt;&amp;gt;验证配置
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二核心工作流"&gt;二、核心工作流
+&lt;/h2&gt;&lt;p&gt;Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &amp;ndash;&amp;gt; 暂存区 &amp;ndash;&amp;gt; 本地仓库&lt;br&gt;
+1.初始化：使用git init 使当前文件夹受 Git 管理。&lt;br&gt;
+2.追踪：使用 git add . 将修改后的文件存入暂存区。&lt;br&gt;
+3.提交：使用 git commit -m &amp;ldquo;commit message&amp;rdquo; 将暂存区内容永久保存到本地仓库。&lt;/p&gt;
+&lt;h2 id="三常用指令速查"&gt;三、常用指令速查
+&lt;/h2&gt;&lt;p&gt;起步与同步
+指令 		作用
+git clone &lt;url&gt; 	从远程仓库下载完整项目到本地
+git status 	查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存）
+git pull 	从远程拉取最新代码并合并到本地
+git push				将本地的存档推送至远程服务器&lt;/p&gt;
+&lt;p&gt;分支管理（分支允许你在不影响主线代码的情况下开发新功能）
+git branch 	查看分支
+git checkout -b &lt;name&gt;
+git merge &lt;name&gt; 合并分支
+git branch -d &lt;name&gt;	删除分支&lt;/p&gt;</description></item><item><title>Markdown写作快速上手</title><link>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</link><pubDate>Tue, 27 Jan 2026 21:07:36 +0800</pubDate><guid>https://yangzongyi.cn/post/markdown%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/</guid><description>&lt;p&gt;Markdown 是一种轻量级标记语言，它通过简单的符号实现排版，让作者专注于内容而非格式。本文将为你系统性地梳理常用的 Markdown 写作技巧。&lt;/p&gt;
 &lt;h2 id="一-标题与文本样式"&gt;一、 标题与文本样式
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;多级标题
@@ -135,49 +160,143 @@
 在段落开头使用 &amp;gt; :&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这是一段引用文字&lt;/p&gt;</description></item><item><title>Git_核心指令与工作流指南</title><link>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 30 Jan 2026 20:55:18 +0800</pubDate><guid>https://yangzongyi.cn/post/git_%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97/</guid><description>&lt;pre&gt;&lt;code&gt;在大规模项目开发或团队协作中，Git 是管理代码逻辑、追踪历史记录必不可少的工具。它不仅能防止代码丢失，还能提供分支管理以支持并行开发。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id="一基础配置"&gt;一、基础配置
-&lt;/h1&gt;&lt;p&gt;在安装 Git 后的首要任务是配置个人身份标识。这是因为 Git 的每一次提交都会关联这些信息：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.name &lt;span style="color:#e6db74"&gt;&amp;#34;YourName&amp;#34;&lt;/span&gt; --&amp;gt;&amp;gt;设置全局用户名
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.email &lt;span style="color:#e6db74"&gt;&amp;#34;yourmail@example.com&amp;#34;&lt;/span&gt; --&amp;gt;&amp;gt;设置全局邮箱
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --list --&amp;gt;&amp;gt;验证配置
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二核心工作流"&gt;二、核心工作流
-&lt;/h2&gt;&lt;p&gt;Git 的操作逻辑可以概括为三个主要区域的转换：工作区 &amp;ndash;&amp;gt; 暂存区 &amp;ndash;&amp;gt; 本地仓库
-1.初始化：使用 git init 使当前文件夹受 Git 管理。
-2.追踪：使用 git add . 将修改后的文件存入暂存区。
-3.提交：使用 git commit -m &amp;ldquo;commit message&amp;rdquo; 将暂存区内容永久保存到本地仓库。&lt;/p&gt;
-&lt;h2 id="三常用指令速查"&gt;三、常用指令速查
-&lt;/h2&gt;&lt;p&gt;起步与同步
-指令 		作用
-git clone &lt;url&gt; 	从远程仓库下载完整项目到本地
-git status 	查看当前文件的修改状态（红字表示未追踪，绿字表示已暂存）
-git pull 	从远程拉取最新代码并合并到本地
-git push				将本地的存档推送至远程服务器&lt;/p&gt;
-&lt;p&gt;分支管理（分支允许你在不影响主线代码的情况下开发新功能）
-git branch 	查看分支
-git checkout -b &lt;name&gt;
-git merge &lt;name&gt; 合并分支
-git branch -d &lt;name&gt;	删除分支&lt;/p&gt;</description></item><item><title>个人博客创建流程</title><link>https://yangzongyi.cn/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 29 Jan 2026 21:34:37 +0800</pubDate><guid>https://yangzongyi.cn/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/</guid><description>&lt;p&gt;一、安装流程&lt;/p&gt;
+&lt;p&gt;这是一段引用文字&lt;/p&gt;</description></item><item><title>ADB学习笔记</title><link>https://yangzongyi.cn/post/adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><pubDate>Sat, 24 Jan 2026 18:22:33 +0800</pubDate><guid>https://yangzongyi.cn/post/adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="android-adb-学习与实战笔记"&gt;Android ADB 学习与实战笔记
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id="一-基础概念"&gt;一、 基础概念
+&lt;/h2&gt;&lt;h3 id="1-什么是-adb"&gt;1. 什么是 ADB?
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全称&lt;/strong&gt;：Android Debug Bridge (安卓调试桥)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：用于电脑（Windows/Mac/Linux）与安卓设备（手机/模拟器）之间进行通信和控制的命令行工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;底层原理&lt;/strong&gt;：安卓系统是基于 &lt;strong&gt;Linux 内核&lt;/strong&gt; 开发的，因此很多操作逻辑与 Linux 相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="对比知识点"&gt;对比知识点：
+&lt;/h4&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;平台&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;调试工具/库&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Android&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;使用 &lt;strong&gt;ADB&lt;/strong&gt; 进行通信调试&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;iOS&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;使用 &lt;strong&gt;Xcode&lt;/strong&gt; (IDE) 或 &lt;strong&gt;libimobiledevice&lt;/strong&gt; 库进行通信调试&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="2-环境变量配置"&gt;2. 环境变量配置
+&lt;/h3&gt;&lt;p&gt;为了在电脑的任何目录下都能使用 &lt;code&gt;adb&lt;/code&gt; 命令，需要将 &lt;code&gt;adb.exe&lt;/code&gt; 所在的路径加入环境变量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;用户变量&lt;/strong&gt;：仅对当前登录的电脑用户生效（优先级高于系统变量）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;系统变量&lt;/strong&gt;：对所有登录该电脑的用户生效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置目的&lt;/strong&gt;：让 Windows 的命令提示符（CMD）知道去哪里找到 &lt;code&gt;adb.exe&lt;/code&gt; 这个可执行文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="二-常用-adb-指令"&gt;二、 常用 ADB 指令
+&lt;/h2&gt;&lt;h3 id="1-设备连接与状态"&gt;1. 设备连接与状态
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;adb devices&lt;/code&gt;：查看当前连接的设备列表。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;adb connect [IP]:[端口]&lt;/code&gt;：通过无线 WiFi 连接手机。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;adb disconnect&lt;/code&gt;：断开无线连接。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;adb kill-server&lt;/code&gt; / &lt;code&gt;adb start-server&lt;/code&gt;：重启 ADB 服务（连接异常时使用）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-shell-模式"&gt;2. Shell 模式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;adb shell&lt;/code&gt;：进入安卓手机的 Linux 系统命令行模式。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;提示符&lt;/strong&gt;：&lt;code&gt;$&lt;/code&gt; 代表普通用户，&lt;code&gt;#&lt;/code&gt; 代表 Root（管理员）用户。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;exit&lt;/code&gt;：退出安卓 Shell，回到 Windows 命令行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="3-应用管理-安装卸载"&gt;3. 应用管理 (安装/卸载)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;安装 APK&lt;/strong&gt;：&lt;code&gt;adb install [电脑上的apk路径]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;例如：&lt;code&gt;adb install D:\android_apk\litiaotiao.apk&lt;/code&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;覆盖安装（保留数据）：&lt;code&gt;adb install -r [apk路径]&lt;/code&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;卸载应用&lt;/strong&gt;：&lt;code&gt;adb uninstall [应用包名]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;例如：&lt;code&gt;adb uninstall com.litiaotiao.realfriends&lt;/code&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;卸载但保留数据：&lt;code&gt;adb uninstall -k [应用包名]&lt;/code&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="4-文件传输-电脑---手机"&gt;4. 文件传输 (电脑 &amp;lt;-&amp;gt; 手机)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;从手机下载文件 (Pull)&lt;/strong&gt;：&lt;code&gt;adb pull [手机文件路径] [电脑存储路径]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;例如：&lt;code&gt;adb pull /sdcard/DCIM/Camera/photo.jpg D:\Photos\&lt;/code&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上传文件到手机 (Push)&lt;/strong&gt;：&lt;code&gt;adb push [电脑文件路径] [手机存储路径]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;例如：&lt;code&gt;adb push D:\test.txt /sdcard/Download/&lt;/code&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="三-安卓系统内部指令-linux-shell"&gt;三、 安卓系统内部指令 (Linux Shell)
+&lt;/h2&gt;&lt;p&gt;这些指令通常在输入 &lt;code&gt;adb shell&lt;/code&gt; 后使用，或者写作 &lt;code&gt;adb shell [指令]&lt;/code&gt;。&lt;/p&gt;</description></item><item><title>个人博客创建流程</title><link>https://yangzongyi.cn/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/</link><pubDate>Sun, 18 Jan 2026 21:34:37 +0800</pubDate><guid>https://yangzongyi.cn/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/</guid><description>&lt;h1 id="快速上手hugo-个人博客创建流程与避坑指南"&gt;快速上手：Hugo 个人博客创建流程与避坑指南
+&lt;/h1&gt;&lt;p&gt;Hugo 是目前最流行的静态网站生成器之一。本笔记记录了从环境配置到站点发布的完整流程，并针对初学者容易遇到的“404错误”和“路径失效”问题进行了重点标注。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-安装与环境配置"&gt;1. 安装与环境配置
+&lt;/h2&gt;&lt;p&gt;搭建博客的第一步是让你的系统识别 Hugo 指令。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;安装程序&lt;/strong&gt;：下载 Hugo 压缩包（建议选择 &lt;code&gt;hugo_extended&lt;/code&gt; 版本以支持高级主题）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;初始化站点&lt;/strong&gt;：在存放 &lt;code&gt;hugo.exe&lt;/code&gt; 的文件夹下打开终端，执行：
+&lt;code&gt;hugo new site my_blog&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;环境变量&lt;/strong&gt;：将 &lt;code&gt;hugo.exe&lt;/code&gt; 路径加入系统变量 &lt;strong&gt;Path&lt;/strong&gt;。
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：配置后必须重启 CMD 或 PowerShell 窗口，设置才会生效。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="2-核心原理主题安装与层级规范"&gt;2. 核心原理：主题安装与层级规范
+&lt;/h2&gt;&lt;p&gt;Hugo 的页面渲染依赖于主题。如果主题存放位置不对，会导致服务启动后页面显示空白。&lt;/p&gt;
+&lt;h3 id="-避坑重点文件夹嵌套问题"&gt;⚠️ 避坑重点：文件夹嵌套问题
+&lt;/h3&gt;&lt;p&gt;下载主题压缩包后，存放到 &lt;code&gt;my_blog\themes\&lt;/code&gt; 中。必须确保结构符合以下规范：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;状态&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;文件夹路径示例&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;结果&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;正确&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;code&gt;themes\stack\theme.toml&lt;/code&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;成功渲染&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;错误&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;code&gt;themes\stack\stack\theme.toml&lt;/code&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;404 错误&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：若出现双层嵌套，需将内层文件全部剪切至第一层 &lt;code&gt;themes\stack&lt;/code&gt; 目录下，并删除多余的空文件夹。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="3-内容创作流程"&gt;3. 内容创作流程
+&lt;/h2&gt;&lt;p&gt;创建文章并不是手动新建 &lt;code&gt;.md&lt;/code&gt; 文件，而是建议使用 Hugo 内置指令来生成带元数据的模板。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;下载hugo压缩包&lt;/li&gt;
-&lt;li&gt;在含有hugo.exe的文件夹下输入cmd&lt;/li&gt;
-&lt;li&gt;执行hugo new site my_blog :创建文件夹,以my_blog为例
-系统提示按照图中的几个步骤就能搭建个人博客
-[图片]&lt;/li&gt;
-&lt;li&gt;将hugo.exe配置系统变量，关掉目前所有打开的 cmd / PowerShell 窗口，重新开放一个才生效&lt;/li&gt;
-&lt;li&gt;切换到刚才创建的文件目录： cd my_blog&lt;/li&gt;
-&lt;li&gt;输入：hugo server &amp;ndash;buildDrafts 出现如下页面说明服务已经搭好，还没安装主题
-[图片]&lt;/li&gt;
-&lt;li&gt;前往https://themes.gohugo.io/下载主题压缩包，存放到所创建文件夹下的themes中解压缩。
-此时需要避免出现 my_blog\themes\stack\stack的情况，此时 需要将第二个stack中的所有内容剪切到第一个stack中，并删除第二个stack文件夹。{因为 Hugo 在第一层 themes/stack/ 下找不到 layouts 和 theme.toml，它就不知道该如何渲染页面，所以直接给你显示了 404 错误。}&lt;/li&gt;
-&lt;li&gt;在&amp;hellip;\my_blog&amp;gt;路径下输入：hugo new post/Article01.md 快速创建一个新的 Markdown 内容文件
-注意上述中的post如果改为posts可能会导致Article01.md中的内容无法正常显示&lt;/li&gt;
-&lt;li&gt;在创建的my_blog文件下中在文本编辑器中打开 hugo.toml ，在末尾添加：theme = &amp;lsquo;stack&amp;rsquo;，注意此处的主题名要与theme文件夹下的相同。&lt;/li&gt;
-&lt;li&gt;进入content\posts中找到Article01.md,用文本编辑器打开，将draft = true中的true改为false，让这篇文章从“草稿”变成“正式内容”。&lt;/li&gt;
-&lt;li&gt;输入：hugo server &amp;ndash;buildDrafts 或 hugo server 出现如下页面说明服务已经搭好
-[图片]&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>firstblog</title><link>https://yangzongyi.cn/post/articles01/</link><pubDate>Wed, 28 Jan 2026 20:59:18 +0800</pubDate><guid>https://yangzongyi.cn/post/articles01/</guid><description>&lt;p&gt;hello，hugo
+&lt;li&gt;&lt;strong&gt;快速创建&lt;/strong&gt;：
+在 &lt;code&gt;my_blog&lt;/code&gt; 路径下输入：&lt;code&gt;hugo new post/Article01.md&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：路径名 &lt;code&gt;post&lt;/code&gt; 需根据主题要求确定。若改为 &lt;code&gt;posts&lt;/code&gt;，部分主题可能无法读取。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态激活&lt;/strong&gt;：
+找到文章文件，将头部信息中的 &lt;code&gt;draft = true&lt;/code&gt; 修改为 &lt;code&gt;false&lt;/code&gt;。
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;关键点&lt;/strong&gt;：只要 &lt;code&gt;draft&lt;/code&gt; 为 &lt;code&gt;true&lt;/code&gt;，这篇文章就处于草稿状态，正式预览时将不可见。&lt;/p&gt;</description></item><item><title>firstblog</title><link>https://yangzongyi.cn/post/articles01/</link><pubDate>Sun, 18 Jan 2026 20:59:18 +0800</pubDate><guid>https://yangzongyi.cn/post/articles01/</guid><description>&lt;p&gt;hello，hugo
 成功完成了博客搭建——从本地到公网&lt;/p&gt;</description></item></channel></rss>
