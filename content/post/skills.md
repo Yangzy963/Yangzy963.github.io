@@ -1,7 +1,7 @@
 +++
-date = '2026-03-01T15:54:36+08:00'
+date = '2026-02-14T15:54:36+08:00'
 draft = false
-title = 'Skills'
+title = 'Skill'
 +++
 # Agent 进化论：一文读懂让 AI 真正“干活”的 Skills 机制
 

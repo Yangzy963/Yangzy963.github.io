@@ -15,10 +15,10 @@ git config --global user.email "yourmail@example.com"  -->>设置全局邮箱
 git config --list  -->>验证配置
 ```
 ## 二、核心工作流
-Git 的操作逻辑可以概括为三个主要区域的转换：工作区 --> 暂存区 --> 本地仓库
-1.初始化：使用 git init 使当前文件夹受 Git 管理。
-2.追踪：使用 git add . 将修改后的文件存入暂存区。
-3.提交：使用 git commit -m "commit message" 将暂存区内容永久保存到本地仓库。
+Git 的操作逻辑可以概括为三个主要区域的转换：工作区 --> 暂存区 --> 本地仓库  
+1.初始化：使用git init 使当前文件夹受 Git 管理。  
+2.追踪：使用 git add . 将修改后的文件存入暂存区。  
+3.提交：使用 git commit -m "commit message" 将暂存区内容永久保存到本地仓库。  
 
 ## 三、常用指令速查
   起步与同步
