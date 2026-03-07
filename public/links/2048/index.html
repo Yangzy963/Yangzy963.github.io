@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="2048技能 概述 此技能用于处理与&quot;2048&quot;小游戏相关的任务。\n游戏规则 (核心逻辑) 在执行游戏相关任务时，必须严格遵守以下规则：\n游戏目标：在 4x4 的网格中，通过合并相同数字的方块，最终得到一个数值为 2048 的方块；若能继续合并，则追求更高分。 核心规则： 移动操作：玩家可以选择上、下、左、右四个方向进行移动。 滑动区域约束（重要）：所有的滑动轨迹必须限制在屏幕中心 4x4 的正方形数字阵列区域内。严禁在上方（包含“2048”标题、分数栏、菜单按钮区域）或下方（包含底部五个圆形图标按钮区域）进行滑动，以防误触功能键。 滑动逻辑：每次移动时，所有方块会朝着指定方向滑动，直到碰到边界或其他方块。 合并机制：当两个相同数字的方块在移动过程中相遇时，它们会合并成一个新的方块，数值为两者之和。 新方块生成：每次有效移动结束后，网格中空余位置会随机出现一个新的数字为 2 或 4 的方块。 流程控制：请持续推进游戏进程，达成 2048 后可根据用户指令决定是否继续，游戏失败后提示用户并询问是否重新开始。 游戏界面：方块以数字形式在 4x4 网格内排列，颜色随数字增大而变化。 游戏结束：当网格被填满，且上下左右四个方向均没有可合并的方块时，游戏结束。 策略性：玩家需要规划滑动方向，通常建议将大数固定在一个角落，以避免网格杂乱导致死局。 使用场景 用户要求&quot;打开抖音玩一局2048&quot; 用户要求&quot;玩一会儿2048&quot; 用户要求&quot;搜索2048并帮我玩到512分&quot; 工作流程 识别任务：当用户任务涉及 2048 游戏时触发。 执行辅助：根据上述游戏规则，识别当前棋盘数字分布，调用指令提供滑动决策。 返回结果：将操作结果返回给 Agent 继续执行手机或网页操作。 注意事项 实际的游戏操作仍然通过手机或浏览器控制完成。 此技能主要用于识别棋盘状态并辅助处理游戏逻辑。 强制规避区域：严禁点击或滑动到 Y 轴坐标较小（顶部菜单栏）或 Y 轴坐标较大（底部圆形导航栏）的区域。 弹窗处理：若操作过程中弹出“评价应用”、“获取道具”或广告弹窗，必须立即点击关闭按钮 [X] 或“不，谢谢”，严禁点击任何可能跳转外部链接的按钮。 操作原则：在无道具、无广告的前提下，通过纯数字逻辑策略进行游戏推进。 ">
+<title>杨宗亿的个人博客</title>
+
+<link rel='canonical' href='http://localhost:1313/links/2048/'>
+
+<link rel="stylesheet" href="/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css"><meta property='og:title' content="杨宗亿的个人博客">
+<meta property='og:description' content="2048技能 概述 此技能用于处理与&quot;2048&quot;小游戏相关的任务。\n游戏规则 (核心逻辑) 在执行游戏相关任务时，必须严格遵守以下规则：\n游戏目标：在 4x4 的网格中，通过合并相同数字的方块，最终得到一个数值为 2048 的方块；若能继续合并，则追求更高分。 核心规则： 移动操作：玩家可以选择上、下、左、右四个方向进行移动。 滑动区域约束（重要）：所有的滑动轨迹必须限制在屏幕中心 4x4 的正方形数字阵列区域内。严禁在上方（包含“2048”标题、分数栏、菜单按钮区域）或下方（包含底部五个圆形图标按钮区域）进行滑动，以防误触功能键。 滑动逻辑：每次移动时，所有方块会朝着指定方向滑动，直到碰到边界或其他方块。 合并机制：当两个相同数字的方块在移动过程中相遇时，它们会合并成一个新的方块，数值为两者之和。 新方块生成：每次有效移动结束后，网格中空余位置会随机出现一个新的数字为 2 或 4 的方块。 流程控制：请持续推进游戏进程，达成 2048 后可根据用户指令决定是否继续，游戏失败后提示用户并询问是否重新开始。 游戏界面：方块以数字形式在 4x4 网格内排列，颜色随数字增大而变化。 游戏结束：当网格被填满，且上下左右四个方向均没有可合并的方块时，游戏结束。 策略性：玩家需要规划滑动方向，通常建议将大数固定在一个角落，以避免网格杂乱导致死局。 使用场景 用户要求&quot;打开抖音玩一局2048&quot; 用户要求&quot;玩一会儿2048&quot; 用户要求&quot;搜索2048并帮我玩到512分&quot; 工作流程 识别任务：当用户任务涉及 2048 游戏时触发。 执行辅助：根据上述游戏规则，识别当前棋盘数字分布，调用指令提供滑动决策。 返回结果：将操作结果返回给 Agent 继续执行手机或网页操作。 注意事项 实际的游戏操作仍然通过手机或浏览器控制完成。 此技能主要用于识别棋盘状态并辅助处理游戏逻辑。 强制规避区域：严禁点击或滑动到 Y 轴坐标较小（顶部菜单栏）或 Y 轴坐标较大（底部圆形导航栏）的区域。 弹窗处理：若操作过程中弹出“评价应用”、“获取道具”或广告弹窗，必须立即点击关闭按钮 [X] 或“不，谢谢”，严禁点击任何可能跳转外部链接的按钮。 操作原则：在无道具、无广告的前提下，通过纯数字逻辑策略进行游戏推进。 ">
+<meta property='og:url' content='http://localhost:1313/links/2048/'>
+<meta property='og:site_name' content='杨宗亿的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Links' />
+<meta name="twitter:title" content="杨宗亿的个人博客">
+<meta name="twitter:description" content="2048技能 概述 此技能用于处理与&quot;2048&quot;小游戏相关的任务。\n游戏规则 (核心逻辑) 在执行游戏相关任务时，必须严格遵守以下规则：\n游戏目标：在 4x4 的网格中，通过合并相同数字的方块，最终得到一个数值为 2048 的方块；若能继续合并，则追求更高分。 核心规则： 移动操作：玩家可以选择上、下、左、右四个方向进行移动。 滑动区域约束（重要）：所有的滑动轨迹必须限制在屏幕中心 4x4 的正方形数字阵列区域内。严禁在上方（包含“2048”标题、分数栏、菜单按钮区域）或下方（包含底部五个圆形图标按钮区域）进行滑动，以防误触功能键。 滑动逻辑：每次移动时，所有方块会朝着指定方向滑动，直到碰到边界或其他方块。 合并机制：当两个相同数字的方块在移动过程中相遇时，它们会合并成一个新的方块，数值为两者之和。 新方块生成：每次有效移动结束后，网格中空余位置会随机出现一个新的数字为 2 或 4 的方块。 流程控制：请持续推进游戏进程，达成 2048 后可根据用户指令决定是否继续，游戏失败后提示用户并询问是否重新开始。 游戏界面：方块以数字形式在 4x4 网格内排列，颜色随数字增大而变化。 游戏结束：当网格被填满，且上下左右四个方向均没有可合并的方块时，游戏结束。 策略性：玩家需要规划滑动方向，通常建议将大数固定在一个角落，以避免网格杂乱导致死局。 使用场景 用户要求&quot;打开抖音玩一局2048&quot; 用户要求&quot;玩一会儿2048&quot; 用户要求&quot;搜索2048并帮我玩到512分&quot; 工作流程 识别任务：当用户任务涉及 2048 游戏时触发。 执行辅助：根据上述游戏规则，识别当前棋盘数字分布，调用指令提供滑动决策。 返回结果：将操作结果返回给 Agent 继续执行手机或网页操作。 注意事项 实际的游戏操作仍然通过手机或浏览器控制完成。 此技能主要用于识别棋盘状态并辅助处理游戏逻辑。 强制规避区域：严禁点击或滑动到 Y 轴坐标较小（顶部菜单栏）或 Y 轴坐标较大（底部圆形导航栏）的区域。 弹窗处理：若操作过程中弹出“评价应用”、“获取道具”或广告弹窗，必须立即点击关闭按钮 [X] 或“不，谢谢”，严禁点击任何可能跳转外部链接的按钮。 操作原则：在无道具、无广告的前提下，通过纯数字逻辑策略进行游戏推进。 ">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="http://localhost:1313/portrait.jpg" 
+                        width=""
+                        height=""
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">杨宗亿的个人博客</a></h1>
+            <h2 class="site-description">通信工程 | Python | LLM</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pen-tool" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg>
+                
+                <span>文章</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/links/2048/"></a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <h1 id="2048技能">2048技能
+</h1><h2 id="概述">概述
+</h2><p>此技能用于处理与&quot;2048&quot;小游戏相关的任务。</p>
+<h2 id="游戏规则-核心逻辑">游戏规则 (核心逻辑)
+</h2><p>在执行游戏相关任务时，必须严格遵守以下规则：</p>
+<ol>
+<li><strong>游戏目标</strong>：在 4x4 的网格中，通过合并相同数字的方块，最终得到一个数值为 2048 的方块；若能继续合并，则追求更高分。</li>
+<li><strong>核心规则</strong>：
+<ul>
+<li><strong>移动操作</strong>：玩家可以选择上、下、左、右四个方向进行移动。</li>
+<li><strong>滑动区域约束（重要）</strong>：<strong>所有的滑动轨迹必须限制在屏幕中心 4x4 的正方形数字阵列区域内</strong>。严禁在上方（包含“2048”标题、分数栏、菜单按钮区域）或下方（包含底部五个圆形图标按钮区域）进行滑动，以防误触功能键。</li>
+<li><strong>滑动逻辑</strong>：每次移动时，所有方块会朝着指定方向滑动，直到碰到边界或其他方块。</li>
+<li><strong>合并机制</strong>：当两个相同数字的方块在移动过程中相遇时，它们会合并成一个新的方块，数值为两者之和。</li>
+<li><strong>新方块生成</strong>：每次有效移动结束后，网格中空余位置会随机出现一个新的数字为 2 或 4 的方块。</li>
+<li><strong>流程控制</strong>：请持续推进游戏进程，达成 2048 后可根据用户指令决定是否继续，游戏失败后提示用户并询问是否重新开始。</li>
+</ul>
+</li>
+<li><strong>游戏界面</strong>：方块以数字形式在 4x4 网格内排列，颜色随数字增大而变化。</li>
+<li><strong>游戏结束</strong>：当网格被填满，且上下左右四个方向均没有可合并的方块时，游戏结束。</li>
+<li><strong>策略性</strong>：玩家需要规划滑动方向，通常建议将大数固定在一个角落，以避免网格杂乱导致死局。</li>
+</ol>
+<h2 id="使用场景">使用场景
+</h2><ul>
+<li>用户要求&quot;打开抖音玩一局2048&quot;</li>
+<li>用户要求&quot;玩一会儿2048&quot;</li>
+<li>用户要求&quot;搜索2048并帮我玩到512分&quot;</li>
+</ul>
+<h2 id="工作流程">工作流程
+</h2><ol>
+<li><strong>识别任务</strong>：当用户任务涉及 2048 游戏时触发。</li>
+<li><strong>执行辅助</strong>：根据上述游戏规则，识别当前棋盘数字分布，调用指令提供滑动决策。</li>
+<li><strong>返回结果</strong>：将操作结果返回给 Agent 继续执行手机或网页操作。</li>
+</ol>
+<h2 id="注意事项">注意事项
+</h2><ul>
+<li>实际的游戏操作仍然通过手机或浏览器控制完成。</li>
+<li>此技能主要用于识别棋盘状态并辅助处理游戏逻辑。</li>
+<li><strong>强制规避区域</strong>：严禁点击或滑动到 Y 轴坐标较小（顶部菜单栏）或 Y 轴坐标较大（底部圆形导航栏）的区域。</li>
+<li><strong>弹窗处理</strong>：若操作过程中弹出“评价应用”、“获取道具”或广告弹窗，<strong>必须立即点击关闭按钮 [X] 或“不，谢谢”</strong>，严禁点击任何可能跳转外部链接的按钮。</li>
+<li><strong>操作原则</strong>：在无道具、无广告的前提下，通过纯数字逻辑策略进行游戏推进。</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 杨宗亿的个人博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.bcead1b1367f383f0b6b3723a66d4b6f164a18c02249fa46f0fdeb46e64ad3e1.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

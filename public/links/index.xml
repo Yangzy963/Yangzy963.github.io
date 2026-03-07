@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Links on 杨宗亿的个人博客</title>
+    <link>http://localhost:1313/links/</link>
+    <description>Recent content in Links on 杨宗亿的个人博客</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <atom:link href="http://localhost:1313/links/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/links/yanglegeyang/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/links/yanglegeyang/</guid>
+      <description>&lt;h1 id=&#34;羊了个羊技能&#34;&gt;羊了个羊技能&#xA;&lt;/h1&gt;&lt;h2 id=&#34;概述&#34;&gt;概述&#xA;&lt;/h2&gt;&lt;p&gt;此技能用于处理与&amp;quot;羊了个羊&amp;quot;小游戏相关的任务。&lt;/p&gt;&#xA;&lt;h2 id=&#34;游戏规则-核心逻辑&#34;&gt;游戏规则 (核心逻辑)&#xA;&lt;/h2&gt;&lt;p&gt;在执行游戏相关任务时，必须严格遵守以下规则：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;游戏目标&lt;/strong&gt;：玩家需要通过消除卡片来完成关卡，最终目标是清空所有的卡片。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;消除规则&lt;/strong&gt;：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;游戏界面中会出现多个图案，玩家需要点击图案将其放入底部的槽中。&lt;/li&gt;&#xA;&lt;li&gt;当槽中有&lt;strong&gt;三个相同&lt;/strong&gt;的图案时，这三个图案会自动消除。&lt;/li&gt;&#xA;&lt;li&gt;玩家需要尽量避免槽中积累过多不同的图案，以免无法继续消除。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;硬性约束&lt;/strong&gt;：严禁点击收集槽里的图案；&lt;strong&gt;严禁点击屏幕底部蓝色区域的三个道具按钮（移出、撤回、洗牌）&lt;/strong&gt;；严禁观看广告。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;强制规避坐标&lt;/strong&gt;：在游戏主界面中，禁止点击 Y 坐标大于 900 的区域（道具栏所在位置）。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;流程控制&lt;/strong&gt;：请持续推进游戏进程，游戏通关后继续下一关，游戏失败后重新开始。&lt;/li&gt;&#xA;&lt;li&gt;卡片是方形的，并且亮色的卡片是可以点击的，暗色的卡片是被亮色的卡片覆盖在下面的，需要将亮色的卡片点开才能点击暗色的卡片。&lt;/li&gt;&#xA;&lt;li&gt;点击卡片就能将卡片放入卡槽，如果卡槽中有3个相连并且相同的卡片就能将这3个相同的卡片抵消，从而腾出3个新的位置。&lt;/li&gt;&#xA;&lt;li&gt;卡槽最大容量是7个，满了7个就会导致游戏失败（指的是这7个卡片中没有三个相同的卡片的情况，比如2个萝卜2个玉米2个草1个萝卜这种情况会导致游戏失败，不是说7个卡槽中有三个萝卜就能自动抵消，还有一个要求是三个萝卜必须连在一起，2个草2个玉米2个萝卜1个萝卜这种情况就行）。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;游戏界面&lt;/strong&gt;：图案通常以堆叠的方式呈现，玩家需要逐层消除。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;关卡设计&lt;/strong&gt;：游戏包含多个关卡，随着关卡的推进，图案的复杂度和数量会增加。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;策略性&lt;/strong&gt;：玩家需要规划消除顺序，以避免槽中积累过多无法消除的图案。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;使用场景&#34;&gt;使用场景&#xA;&lt;/h2&gt;&lt;ul&gt;&#xA;&lt;li&gt;用户要求&amp;quot;打开抖音搜索羊了个羊&amp;quot;&lt;/li&gt;&#xA;&lt;li&gt;用户要求&amp;quot;玩羊了个羊&amp;quot;&lt;/li&gt;&#xA;&lt;li&gt;用户要求&amp;quot;搜索羊了个羊并完成一局游戏&amp;quot;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;工作流程&#34;&gt;工作流程&#xA;&lt;/h2&gt;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;识别任务&lt;/strong&gt;：当用户任务涉及羊了个羊游戏时触发。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;执行辅助&lt;/strong&gt;：根据上述游戏规则，调用脚本或指令提供辅助操作。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;返回结果&lt;/strong&gt;：将结果返回给 Agent 继续执行手机操作。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;注意事项&#34;&gt;注意事项&#xA;&lt;/h2&gt;&lt;ul&gt;&#xA;&lt;li&gt;实际的游戏操作仍然通过手机控制完成。&lt;/li&gt;&#xA;&lt;li&gt;此技能主要用于识别和辅助处理游戏相关任务。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;弹窗处理&lt;/strong&gt;：若误触导致弹出“移出道具”、“撤回道具”或“洗牌道具”的对话框（显示有“获得”和“不，谢谢”选项），&lt;strong&gt;必须立即点击“不，谢谢”或右上角的关闭按钮 [X]&lt;/strong&gt;，严禁点击带有视频图标的“获得”按钮。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;操作原则&lt;/strong&gt;：在无道具、无广告的前提下，通过纯策略进行游戏推进。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

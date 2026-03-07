@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 一、 支持的游戏 游戏类型 游戏名称 skill内容 最终结果 益智消除类 羊了个羊 点击查看详情 抓大鹅 点击查看详情 益智解密类 2048 点击查看详情 二、运行遇到的问题 1. 用户类指标 问题类型 问题描述 示例说明 游戏规则理解不足 大模型针对游戏规则的理解可能存在错误的情况；即使在游戏规则中反复强调，效果也不太明显。 以「羊了个羊」为例，在游戏规则中明确说明了：点击卡片玩游戏 💭 思考过程:观察到下方架子已有两个相邻玉米卡片,上方右侧仍有一个玉米卡片未与它们形成三个相邻消除条件且之前几次尝试未成功。为达成消除目标,需调整滑动终点坐标至下方架子第三个空位处(更精确对齐),再次尝试将上方玉米卡片拖拽至该位置以形成三个一排触发消除效果 UI图标理解不足 大模型有时会识别不准物体 以「抓大鹅」为例 💭 思考过程:好的，我点击了红色的苹果，现在它也被移到了收集槽中。我可以看到底部收集区域中有3个物品：一个橙色的、1个浅蓝色的和1个红色的苹果。现在我需要继续点击其他物品。 状态认知缺失、逻辑幻觉 重复某一相同步骤 以「2048」为例 💭 思考过程:点击后，数字8仍然被高亮，但界面没有弹出任何选项。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试在数字8上长按，然后滑动，看看能否触发合并操作。\n💭 思考过程:长按后，界面没有变化。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。或者，也许我需要通过某种特定的滑动方式来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。 ">
+<title>GameSKill_Agent运行记录</title>
+
+<link rel='canonical' href='http://localhost:1313/post/gameskill_agent%E8%BF%90%E8%A1%8C%E8%AE%B0%E5%BD%95/'>
+
+<link rel="stylesheet" href="/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css"><meta property='og:title' content="GameSKill_Agent运行记录">
+<meta property='og:description' content=" 一、 支持的游戏 游戏类型 游戏名称 skill内容 最终结果 益智消除类 羊了个羊 点击查看详情 抓大鹅 点击查看详情 益智解密类 2048 点击查看详情 二、运行遇到的问题 1. 用户类指标 问题类型 问题描述 示例说明 游戏规则理解不足 大模型针对游戏规则的理解可能存在错误的情况；即使在游戏规则中反复强调，效果也不太明显。 以「羊了个羊」为例，在游戏规则中明确说明了：点击卡片玩游戏 💭 思考过程:观察到下方架子已有两个相邻玉米卡片,上方右侧仍有一个玉米卡片未与它们形成三个相邻消除条件且之前几次尝试未成功。为达成消除目标,需调整滑动终点坐标至下方架子第三个空位处(更精确对齐),再次尝试将上方玉米卡片拖拽至该位置以形成三个一排触发消除效果 UI图标理解不足 大模型有时会识别不准物体 以「抓大鹅」为例 💭 思考过程:好的，我点击了红色的苹果，现在它也被移到了收集槽中。我可以看到底部收集区域中有3个物品：一个橙色的、1个浅蓝色的和1个红色的苹果。现在我需要继续点击其他物品。 状态认知缺失、逻辑幻觉 重复某一相同步骤 以「2048」为例 💭 思考过程:点击后，数字8仍然被高亮，但界面没有弹出任何选项。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试在数字8上长按，然后滑动，看看能否触发合并操作。\n💭 思考过程:长按后，界面没有变化。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。或者，也许我需要通过某种特定的滑动方式来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。 ">
+<meta property='og:url' content='http://localhost:1313/post/gameskill_agent%E8%BF%90%E8%A1%8C%E8%AE%B0%E5%BD%95/'>
+<meta property='og:site_name' content='杨宗亿的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-03-06T16:27:01&#43;08:00'/><meta property='article:modified_time' content='2026-03-06T16:27:01&#43;08:00'/>
+<meta name="twitter:title" content="GameSKill_Agent运行记录">
+<meta name="twitter:description" content=" 一、 支持的游戏 游戏类型 游戏名称 skill内容 最终结果 益智消除类 羊了个羊 点击查看详情 抓大鹅 点击查看详情 益智解密类 2048 点击查看详情 二、运行遇到的问题 1. 用户类指标 问题类型 问题描述 示例说明 游戏规则理解不足 大模型针对游戏规则的理解可能存在错误的情况；即使在游戏规则中反复强调，效果也不太明显。 以「羊了个羊」为例，在游戏规则中明确说明了：点击卡片玩游戏 💭 思考过程:观察到下方架子已有两个相邻玉米卡片,上方右侧仍有一个玉米卡片未与它们形成三个相邻消除条件且之前几次尝试未成功。为达成消除目标,需调整滑动终点坐标至下方架子第三个空位处(更精确对齐),再次尝试将上方玉米卡片拖拽至该位置以形成三个一排触发消除效果 UI图标理解不足 大模型有时会识别不准物体 以「抓大鹅」为例 💭 思考过程:好的，我点击了红色的苹果，现在它也被移到了收集槽中。我可以看到底部收集区域中有3个物品：一个橙色的、1个浅蓝色的和1个红色的苹果。现在我需要继续点击其他物品。 状态认知缺失、逻辑幻觉 重复某一相同步骤 以「2048」为例 💭 思考过程:点击后，数字8仍然被高亮，但界面没有弹出任何选项。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试在数字8上长按，然后滑动，看看能否触发合并操作。\n💭 思考过程:长按后，界面没有变化。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。或者，也许我需要通过某种特定的滑动方式来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。 ">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="http://localhost:1313/portrait.jpg" 
+                        width=""
+                        height=""
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">杨宗亿的个人博客</a></h1>
+            <h2 class="site-description">通信工程 | Python | LLM</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pen-tool" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg>
+                
+                <span>文章</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/gameskill_agent%E8%BF%90%E8%A1%8C%E8%AE%B0%E5%BD%95/">GameSKill_Agent运行记录</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2026-03-06T16:27:01&#43;08:00'>Friday, March 6, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <hr>
+<h2 id="一-支持的游戏">一、 支持的游戏
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">游戏类型</th>
+          <th style="text-align: left">游戏名称</th>
+          <th style="text-align: left">skill内容</th>
+          <th style="text-align: left">最终结果</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">益智消除类</td>
+          <td style="text-align: left">羊了个羊</td>
+          <td style="text-align: left"><a class="link" href="/links/yanglegeyang" >点击查看详情</a></td>
+          <td style="text-align: left"><img src="/images/p1.png" width="150" alt="GMV趋势图"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">抓大鹅</td>
+          <td style="text-align: left"><a class="link" href="/links/zhuadae" >点击查看详情</a></td>
+          <td style="text-align: left"><img src="/images/p3.png" width="150" alt="GMV趋势图"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">益智解密类</td>
+          <td style="text-align: left">2048</td>
+          <td style="text-align: left"><a class="link" href="/links/2048" >点击查看详情</a></td>
+          <td style="text-align: left"><img src="/images/p4.png" width="150" alt="GMV趋势图"></td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="二运行遇到的问题">二、运行遇到的问题
+</h2><h3 id="1-用户类指标">1. 用户类指标
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>问题类型</th>
+          <th>问题描述</th>
+          <th>示例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>游戏规则理解不足</td>
+          <td>大模型针对游戏规则的理解可能存在错误的情况；即使在游戏规则中反复强调，效果也不太明显。</td>
+          <td>以「羊了个羊」为例，在游戏规则中明确说明了：点击卡片玩游戏 <br>  <img src="/images/p1.png" width="150" alt="GMV趋势图"> <br>💭 思考过程:观察到下方架子已有两个相邻玉米卡片,上方右侧仍有一个玉米卡片未与它们形成三个相邻消除条件且之前几次尝试未成功。为达成消除目标,需调整滑动终点坐标至下方架子第三个空位处(更精确对齐),再次尝试将上方玉米卡片拖拽至该位置以形成三个一排触发消除效果</td>
+      </tr>
+      <tr>
+          <td>UI图标理解不足</td>
+          <td>大模型有时会识别不准物体</td>
+          <td>以「抓大鹅」为例 <br>  <img src="/images/p2.png" width="150" alt="GMV趋势图"> <br> 💭 思考过程:好的，我点击了红色的苹果，现在它也被移到了收集槽中。我可以看到底部收集区域中有3个物品：一个橙色的、1个浅蓝色的和1个红色的苹果。现在我需要继续点击其他物品。</td>
+      </tr>
+      <tr>
+          <td>状态认知缺失、逻辑幻觉</td>
+          <td>重复某一相同步骤</td>
+          <td>以「2048」为例 <br>  <img src="/images/p4.png" width="150" alt="GMV趋势图"> <br> 💭 思考过程:点击后，数字8仍然被高亮，但界面没有弹出任何选项。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试在数字8上长按，然后滑动，看看能否触发合并操作。<br> <img src="/images/p4.png" width="150" alt="GMV趋势图"><br> 💭 思考过程:长按后，界面没有变化。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。或者，也许我需要通过某种特定的滑动方式来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。</td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 杨宗亿的个人博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.bcead1b1367f383f0b6b3723a66d4b6f164a18c02249fa46f0fdeb46e64ad3e1.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
