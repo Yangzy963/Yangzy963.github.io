@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Links on 杨宗亿的个人博客</title><link>https://yangzongyi.cn/links/</link><description>Recent content in Links on 杨宗亿的个人博客</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://yangzongyi.cn/links/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://yangzongyi.cn/links/2048/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yangzongyi.cn/links/2048/</guid><description>&lt;h1 id="2048技能"&gt;2048技能
+&lt;/h1&gt;&lt;h2 id="概述"&gt;概述
+&lt;/h2&gt;&lt;p&gt;此技能用于处理与&amp;quot;2048&amp;quot;小游戏相关的任务。&lt;/p&gt;
+&lt;h2 id="游戏规则-核心逻辑"&gt;游戏规则 (核心逻辑)
+&lt;/h2&gt;&lt;p&gt;在执行游戏相关任务时，必须严格遵守以下规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;游戏目标&lt;/strong&gt;：在 4x4 的网格中，通过合并相同数字的方块，最终得到一个数值为 2048 的方块；若能继续合并，则追求更高分。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心规则&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;移动操作&lt;/strong&gt;：玩家可以选择上、下、左、右四个方向进行移动。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;滑动区域约束（重要）&lt;/strong&gt;：&lt;strong&gt;所有的滑动轨迹必须限制在屏幕中心 4x4 的正方形数字阵列区域内&lt;/strong&gt;。严禁在上方（包含“2048”标题、分数栏、菜单按钮区域）或下方（包含底部五个圆形图标按钮区域）进行滑动，以防误触功能键。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;滑动逻辑&lt;/strong&gt;：每次移动时，所有方块会朝着指定方向滑动，直到碰到边界或其他方块。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合并机制&lt;/strong&gt;：当两个相同数字的方块在移动过程中相遇时，它们会合并成一个新的方块，数值为两者之和。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;新方块生成&lt;/strong&gt;：每次有效移动结束后，网格中空余位置会随机出现一个新的数字为 2 或 4 的方块。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流程控制&lt;/strong&gt;：请持续推进游戏进程，达成 2048 后可根据用户指令决定是否继续，游戏失败后提示用户并询问是否重新开始。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;游戏界面&lt;/strong&gt;：方块以数字形式在 4x4 网格内排列，颜色随数字增大而变化。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;游戏结束&lt;/strong&gt;：当网格被填满，且上下左右四个方向均没有可合并的方块时，游戏结束。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;策略性&lt;/strong&gt;：玩家需要规划滑动方向，通常建议将大数固定在一个角落，以避免网格杂乱导致死局。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="使用场景"&gt;使用场景
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;用户要求&amp;quot;打开抖音玩一局2048&amp;quot;&lt;/li&gt;
+&lt;li&gt;用户要求&amp;quot;玩一会儿2048&amp;quot;&lt;/li&gt;
+&lt;li&gt;用户要求&amp;quot;搜索2048并帮我玩到512分&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="工作流程"&gt;工作流程
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;识别任务&lt;/strong&gt;：当用户任务涉及 2048 游戏时触发。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行辅助&lt;/strong&gt;：根据上述游戏规则，识别当前棋盘数字分布，调用指令提供滑动决策。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回结果&lt;/strong&gt;：将操作结果返回给 Agent 继续执行手机或网页操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="注意事项"&gt;注意事项
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;实际的游戏操作仍然通过手机或浏览器控制完成。&lt;/li&gt;
+&lt;li&gt;此技能主要用于识别棋盘状态并辅助处理游戏逻辑。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强制规避区域&lt;/strong&gt;：严禁点击或滑动到 Y 轴坐标较小（顶部菜单栏）或 Y 轴坐标较大（底部圆形导航栏）的区域。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;弹窗处理&lt;/strong&gt;：若操作过程中弹出“评价应用”、“获取道具”或广告弹窗，&lt;strong&gt;必须立即点击关闭按钮 [X] 或“不，谢谢”&lt;/strong&gt;，严禁点击任何可能跳转外部链接的按钮。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;操作原则&lt;/strong&gt;：在无道具、无广告的前提下，通过纯数字逻辑策略进行游戏推进。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title/><link>https://yangzongyi.cn/links/yanglegeyang/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yangzongyi.cn/links/yanglegeyang/</guid><description>&lt;h1 id="羊了个羊技能"&gt;羊了个羊技能
+&lt;/h1&gt;&lt;h2 id="概述"&gt;概述
+&lt;/h2&gt;&lt;p&gt;此技能用于处理与&amp;quot;羊了个羊&amp;quot;小游戏相关的任务。&lt;/p&gt;
+&lt;h2 id="游戏规则-核心逻辑"&gt;游戏规则 (核心逻辑)
+&lt;/h2&gt;&lt;p&gt;在执行游戏相关任务时，必须严格遵守以下规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;游戏目标&lt;/strong&gt;：玩家需要通过消除卡片来完成关卡，最终目标是清空所有的卡片。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;消除规则&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;游戏界面中会出现多个图案，玩家需要点击图案将其放入底部的槽中。&lt;/li&gt;
+&lt;li&gt;当槽中有&lt;strong&gt;三个相同&lt;/strong&gt;的图案时，这三个图案会自动消除。&lt;/li&gt;
+&lt;li&gt;玩家需要尽量避免槽中积累过多不同的图案，以免无法继续消除。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;硬性约束&lt;/strong&gt;：严禁点击收集槽里的图案；&lt;strong&gt;严禁点击屏幕底部蓝色区域的三个道具按钮（移出、撤回、洗牌）&lt;/strong&gt;；严禁观看广告。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强制规避坐标&lt;/strong&gt;：在游戏主界面中，禁止点击 Y 坐标大于 900 的区域（道具栏所在位置）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流程控制&lt;/strong&gt;：请持续推进游戏进程，游戏通关后继续下一关，游戏失败后重新开始。&lt;/li&gt;
+&lt;li&gt;卡片是方形的，并且亮色的卡片是可以点击的，暗色的卡片是被亮色的卡片覆盖在下面的，需要将亮色的卡片点开才能点击暗色的卡片。&lt;/li&gt;
+&lt;li&gt;点击卡片就能将卡片放入卡槽，如果卡槽中有3个相连并且相同的卡片就能将这3个相同的卡片抵消，从而腾出3个新的位置。&lt;/li&gt;
+&lt;li&gt;卡槽最大容量是7个，满了7个就会导致游戏失败（指的是这7个卡片中没有三个相同的卡片的情况，比如2个萝卜2个玉米2个草1个萝卜这种情况会导致游戏失败，不是说7个卡槽中有三个萝卜就能自动抵消，还有一个要求是三个萝卜必须连在一起，2个草2个玉米2个萝卜1个萝卜这种情况就行）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;游戏界面&lt;/strong&gt;：图案通常以堆叠的方式呈现，玩家需要逐层消除。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关卡设计&lt;/strong&gt;：游戏包含多个关卡，随着关卡的推进，图案的复杂度和数量会增加。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;策略性&lt;/strong&gt;：玩家需要规划消除顺序，以避免槽中积累过多无法消除的图案。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="使用场景"&gt;使用场景
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;用户要求&amp;quot;打开抖音搜索羊了个羊&amp;quot;&lt;/li&gt;
+&lt;li&gt;用户要求&amp;quot;玩羊了个羊&amp;quot;&lt;/li&gt;
+&lt;li&gt;用户要求&amp;quot;搜索羊了个羊并完成一局游戏&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="工作流程"&gt;工作流程
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;识别任务&lt;/strong&gt;：当用户任务涉及羊了个羊游戏时触发。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行辅助&lt;/strong&gt;：根据上述游戏规则，调用脚本或指令提供辅助操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回结果&lt;/strong&gt;：将结果返回给 Agent 继续执行手机操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="注意事项"&gt;注意事项
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;实际的游戏操作仍然通过手机控制完成。&lt;/li&gt;
+&lt;li&gt;此技能主要用于识别和辅助处理游戏相关任务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;弹窗处理&lt;/strong&gt;：若误触导致弹出“移出道具”、“撤回道具”或“洗牌道具”的对话框（显示有“获得”和“不，谢谢”选项），&lt;strong&gt;必须立即点击“不，谢谢”或右上角的关闭按钮 [X]&lt;/strong&gt;，严禁点击带有视频图标的“获得”按钮。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;操作原则&lt;/strong&gt;：在无道具、无广告的前提下，通过纯策略进行游戏推进。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title/><link>https://yangzongyi.cn/links/zhuadae/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yangzongyi.cn/links/zhuadae/</guid><description>&lt;h1 id="抓大鹅技能"&gt;抓大鹅技能
+&lt;/h1&gt;&lt;h2 id="概述"&gt;概述
+&lt;/h2&gt;&lt;p&gt;此技能用于处理与&amp;quot;抓大鹅&amp;quot;（Grab a Goose）小游戏相关的任务。&lt;/p&gt;
+&lt;h2 id="游戏规则-核心逻辑"&gt;游戏规则 (核心逻辑)
+&lt;/h2&gt;&lt;p&gt;在执行游戏相关任务时，必须严格遵守以下规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;游戏目标&lt;/strong&gt;：玩家需要通过抓取界面上的 3D 图案（物体）来完成关卡，最终目标是清空所有图案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;抓取与消除规则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;多层堆叠&lt;/strong&gt;：图案以 3D 堆叠方式存在，底层图案被遮挡时无法直接抓取。必须先抓取上层图案，露出下层图案后方可操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;槽位逻辑&lt;/strong&gt;：点击图案将其放入底部的抓取槽中。当槽中有&lt;strong&gt;三个相同&lt;/strong&gt;的图案时，这三个图案会自动消除并腾出空间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败判定&lt;/strong&gt;：抓取槽的容量有限（通常为 7 个）。如果槽位被填满且无法形成三消，则游戏失败。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;硬性约束&lt;/strong&gt;：严禁点击收集槽内的图案；&lt;strong&gt;严禁点击界面底部的道具按钮（如：移出、凑齐、打乱等）&lt;/strong&gt;；严禁点击任何触发广告的按钮。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;坐标规避&lt;/strong&gt;：在游戏主界面中，禁止点击屏幕最下方 15% 的区域（该区域通常为道具栏和广告触发点）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流程控制&lt;/strong&gt;：游戏通关后自动进入下一关；若游戏失败，应立即选择“重新开始”以继续任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;视觉识别要点&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;明暗状态&lt;/strong&gt;：高亮且清晰的物体为可点击状态；被压在下方或半透明状态的物体需先移除上方障碍。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;物理特性&lt;/strong&gt;：图案为 3D 实物模型（如大鹅、汉堡、尖叫鸡等），形状不一，需识别同类特征进行连续抓取。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;策略性建议&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优先抓取槽中已存在的图案，以快速腾出空间。&lt;/li&gt;
+&lt;li&gt;优先处理最上层且遮挡范围最大的图案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="使用场景"&gt;使用场景
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;用户要求 &amp;ldquo;打开抖音搜索抓大鹅&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;用户要求 &amp;ldquo;玩抓大鹅&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;用户要求 &amp;ldquo;帮我通关抓大鹅&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="工作流程"&gt;工作流程
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;识别任务&lt;/strong&gt;：当用户指令涉及“抓大鹅”游戏时触发。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视觉分析&lt;/strong&gt;：分析当前屏幕物体堆叠情况，识别最上层可抓取的图案。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行辅助&lt;/strong&gt;：根据规则计算最优点击顺序，调用指令进行模拟点击。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异常处理&lt;/strong&gt;：若检测到槽位过载，优先寻找可消除的第三个图案。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="注意事项"&gt;注意事项
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;弹窗处理&lt;/strong&gt;：若误触导致弹出“使用道具”、“复活”或“观看视频获取奖励”的对话框，&lt;strong&gt;必须立即点击“放弃”或关闭按钮 [X]&lt;/strong&gt;，严禁观看广告。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;纯净操作&lt;/strong&gt;：在不使用付费道具、不观看广告的前提下，依靠纯策略推进游戏。&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

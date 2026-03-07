@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="产品指标体系学习与常用衡量表格笔记 一、 基础概念 1. 什么是产品指标体系？ 定义：一套结构化的、可量化的数值集合，用于描述、诊断、预测和驱动业务健康与增长。 核心目的：统一度量衡 → 减少沟通成本 → 支持决策 → 指导优化迭代 常见分类（由浅到深）： 描述现状（发生了什么） 拆解原因（为什么发生） 预测趋势（接下来会怎样） 驱动行动（我们该做什么） 对比知识点： 产品类型 最核心关注指标（Top3） 典型关注周期 内容/社交 DAU、时长、互动率 日/周 电商/交易 GMV、转化率、客单价 日/周/月 工具/效率 日活、使用频次、核心功能完成功率 日/周 游戏 DAU、ARPPU、留存率、付费率 日/周/月 2. 指标层级（北极星指标 → 一级指标 → 二级指标） 北极星指标（1个）：团队长期对齐的终极衡量目标 一级指标（3–8个）：直接影响北极星的关键拆解维度 二级/三级指标：诊断原因、定位问题用的明细指标 二、 常用核心指标速查表 1. 用户类指标 指标中文名 英文缩写 计算公式 作用 / 关注点 常见目标方向 日活跃用户数 DAU 当天去重登录/使用用户数 衡量产品整体活跃规模 ↑ 持续增长 月活跃用户数 MAU 自然月内去重用户数 衡量用户基数与覆盖广度 ↑ 长期健康 新增用户数 DNU / 新增 当天首次使用用户数 增长引擎最直接体现 ↑ 拉新效果 次日留存率 Day1 Retention 新增用户第2天回访比例 产品是否真正解决用户问题（最重要留存指标） &gt;40%（消费）&gt;25%（工具） 7日留存率 Day7 新增用户第8天回访比例 中期粘性与价值感知 &gt;10–15% 人均使用时长 Avg Duration 总使用时长 / DAU 内容/沉浸型产品的核心健康度 ↑ 使用频次 Frequency DAU / MAU 用户粘性（越高越好） &gt;0.2–0.3（工具类更高） 2. 流量与转化类指标 指标中文名 英文 计算公式 作用 / 关注点 典型健康值参考 页面浏览量 PV 页面打开总次数 流量规模 — 你好你你你你你你你你你你你你 独立访客 UV 去重访问人数 真实流量来源规模 — 注册/登录转化率 — 注册/登录数 ÷ 启动/访问数 拉新漏斗第一步效率 30–70%（视场景） 整体转化率 Conversion 最终付费/下单数 ÷ 启动/访问数 完整商业闭环效率 电商1–5%，游戏5–20% 漏斗流失率 Drop-off (上步人数 - 下步人数) / 上步人数 定位体验/设计/文案问题 尽量降低关键步骤流失 3. 商业/收入类指标 指标中文名 英文缩写 计算公式 作用 / 关注点 关注方向 交易总额 GMV 订单总金额（不扣退款） 电商/交易平台最重要规模指标 ↑ 实收金额 收入 GMV - 退款 - 渠道费等 实际到手收入 ↑ 客单价 AOV / ARPU 收入 ÷ 订单数 / 付费用户数 用户付费能力与结构 ↑（但不能牺牲转化） 付费率 Paying Rate 付费用户数 ÷ DAU/MAU 变现渗透率 游戏5–15%，工具1–8% ARPPU ARPPU 收入 ÷ 付费用户数 付费用户平均贡献 ↑ LTV Lifetime Value 用户生命周期内贡献总收入 衡量用户终身价值 &gt; CAC 3–5倍为健康 4. 健康/质量类指标（常被忽略但非常重要） 指标中文名 计算公式 / 定义 关注点 报警红线参考 崩溃率 崩溃次数 / 启动次数 App稳定性最直接指标 &lt;0.5–1‰ ANR/卡顿率 ANR/卡顿次数 / 使用次数 Android体验痛点 &lt;1–2% 加载成功率 成功加载次数 / 尝试次数 影响留存的第一体验关 &gt;98–99% 核心功能完成功率 完成人数 / 进入人数 验证功能是否真正被使用 &gt;60–80%（视功能） NPS / 满意度 问卷净推荐值 用户主观感知 &gt;30为及格，&gt;50优秀 三、 快速搭建指标看板建议（北极星模型） 推荐分层结构（由上到下）：\n">
+<title>GameSKill Agent核心指标衡量</title>
+
+<link rel='canonical' href='http://localhost:1313/post/gameskill-agent%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%E8%A1%A1%E9%87%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css"><meta property='og:title' content="GameSKill Agent核心指标衡量">
+<meta property='og:description' content="产品指标体系学习与常用衡量表格笔记 一、 基础概念 1. 什么是产品指标体系？ 定义：一套结构化的、可量化的数值集合，用于描述、诊断、预测和驱动业务健康与增长。 核心目的：统一度量衡 → 减少沟通成本 → 支持决策 → 指导优化迭代 常见分类（由浅到深）： 描述现状（发生了什么） 拆解原因（为什么发生） 预测趋势（接下来会怎样） 驱动行动（我们该做什么） 对比知识点： 产品类型 最核心关注指标（Top3） 典型关注周期 内容/社交 DAU、时长、互动率 日/周 电商/交易 GMV、转化率、客单价 日/周/月 工具/效率 日活、使用频次、核心功能完成功率 日/周 游戏 DAU、ARPPU、留存率、付费率 日/周/月 2. 指标层级（北极星指标 → 一级指标 → 二级指标） 北极星指标（1个）：团队长期对齐的终极衡量目标 一级指标（3–8个）：直接影响北极星的关键拆解维度 二级/三级指标：诊断原因、定位问题用的明细指标 二、 常用核心指标速查表 1. 用户类指标 指标中文名 英文缩写 计算公式 作用 / 关注点 常见目标方向 日活跃用户数 DAU 当天去重登录/使用用户数 衡量产品整体活跃规模 ↑ 持续增长 月活跃用户数 MAU 自然月内去重用户数 衡量用户基数与覆盖广度 ↑ 长期健康 新增用户数 DNU / 新增 当天首次使用用户数 增长引擎最直接体现 ↑ 拉新效果 次日留存率 Day1 Retention 新增用户第2天回访比例 产品是否真正解决用户问题（最重要留存指标） &gt;40%（消费）&gt;25%（工具） 7日留存率 Day7 新增用户第8天回访比例 中期粘性与价值感知 &gt;10–15% 人均使用时长 Avg Duration 总使用时长 / DAU 内容/沉浸型产品的核心健康度 ↑ 使用频次 Frequency DAU / MAU 用户粘性（越高越好） &gt;0.2–0.3（工具类更高） 2. 流量与转化类指标 指标中文名 英文 计算公式 作用 / 关注点 典型健康值参考 页面浏览量 PV 页面打开总次数 流量规模 — 你好你你你你你你你你你你你你 独立访客 UV 去重访问人数 真实流量来源规模 — 注册/登录转化率 — 注册/登录数 ÷ 启动/访问数 拉新漏斗第一步效率 30–70%（视场景） 整体转化率 Conversion 最终付费/下单数 ÷ 启动/访问数 完整商业闭环效率 电商1–5%，游戏5–20% 漏斗流失率 Drop-off (上步人数 - 下步人数) / 上步人数 定位体验/设计/文案问题 尽量降低关键步骤流失 3. 商业/收入类指标 指标中文名 英文缩写 计算公式 作用 / 关注点 关注方向 交易总额 GMV 订单总金额（不扣退款） 电商/交易平台最重要规模指标 ↑ 实收金额 收入 GMV - 退款 - 渠道费等 实际到手收入 ↑ 客单价 AOV / ARPU 收入 ÷ 订单数 / 付费用户数 用户付费能力与结构 ↑（但不能牺牲转化） 付费率 Paying Rate 付费用户数 ÷ DAU/MAU 变现渗透率 游戏5–15%，工具1–8% ARPPU ARPPU 收入 ÷ 付费用户数 付费用户平均贡献 ↑ LTV Lifetime Value 用户生命周期内贡献总收入 衡量用户终身价值 &gt; CAC 3–5倍为健康 4. 健康/质量类指标（常被忽略但非常重要） 指标中文名 计算公式 / 定义 关注点 报警红线参考 崩溃率 崩溃次数 / 启动次数 App稳定性最直接指标 &lt;0.5–1‰ ANR/卡顿率 ANR/卡顿次数 / 使用次数 Android体验痛点 &lt;1–2% 加载成功率 成功加载次数 / 尝试次数 影响留存的第一体验关 &gt;98–99% 核心功能完成功率 完成人数 / 进入人数 验证功能是否真正被使用 &gt;60–80%（视功能） NPS / 满意度 问卷净推荐值 用户主观感知 &gt;30为及格，&gt;50优秀 三、 快速搭建指标看板建议（北极星模型） 推荐分层结构（由上到下）：\n">
+<meta property='og:url' content='http://localhost:1313/post/gameskill-agent%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%E8%A1%A1%E9%87%8F/'>
+<meta property='og:site_name' content='杨宗亿的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-03-05T10:37:07&#43;08:00'/><meta property='article:modified_time' content='2026-03-05T10:37:07&#43;08:00'/>
+<meta name="twitter:title" content="GameSKill Agent核心指标衡量">
+<meta name="twitter:description" content="产品指标体系学习与常用衡量表格笔记 一、 基础概念 1. 什么是产品指标体系？ 定义：一套结构化的、可量化的数值集合，用于描述、诊断、预测和驱动业务健康与增长。 核心目的：统一度量衡 → 减少沟通成本 → 支持决策 → 指导优化迭代 常见分类（由浅到深）： 描述现状（发生了什么） 拆解原因（为什么发生） 预测趋势（接下来会怎样） 驱动行动（我们该做什么） 对比知识点： 产品类型 最核心关注指标（Top3） 典型关注周期 内容/社交 DAU、时长、互动率 日/周 电商/交易 GMV、转化率、客单价 日/周/月 工具/效率 日活、使用频次、核心功能完成功率 日/周 游戏 DAU、ARPPU、留存率、付费率 日/周/月 2. 指标层级（北极星指标 → 一级指标 → 二级指标） 北极星指标（1个）：团队长期对齐的终极衡量目标 一级指标（3–8个）：直接影响北极星的关键拆解维度 二级/三级指标：诊断原因、定位问题用的明细指标 二、 常用核心指标速查表 1. 用户类指标 指标中文名 英文缩写 计算公式 作用 / 关注点 常见目标方向 日活跃用户数 DAU 当天去重登录/使用用户数 衡量产品整体活跃规模 ↑ 持续增长 月活跃用户数 MAU 自然月内去重用户数 衡量用户基数与覆盖广度 ↑ 长期健康 新增用户数 DNU / 新增 当天首次使用用户数 增长引擎最直接体现 ↑ 拉新效果 次日留存率 Day1 Retention 新增用户第2天回访比例 产品是否真正解决用户问题（最重要留存指标） &gt;40%（消费）&gt;25%（工具） 7日留存率 Day7 新增用户第8天回访比例 中期粘性与价值感知 &gt;10–15% 人均使用时长 Avg Duration 总使用时长 / DAU 内容/沉浸型产品的核心健康度 ↑ 使用频次 Frequency DAU / MAU 用户粘性（越高越好） &gt;0.2–0.3（工具类更高） 2. 流量与转化类指标 指标中文名 英文 计算公式 作用 / 关注点 典型健康值参考 页面浏览量 PV 页面打开总次数 流量规模 — 你好你你你你你你你你你你你你 独立访客 UV 去重访问人数 真实流量来源规模 — 注册/登录转化率 — 注册/登录数 ÷ 启动/访问数 拉新漏斗第一步效率 30–70%（视场景） 整体转化率 Conversion 最终付费/下单数 ÷ 启动/访问数 完整商业闭环效率 电商1–5%，游戏5–20% 漏斗流失率 Drop-off (上步人数 - 下步人数) / 上步人数 定位体验/设计/文案问题 尽量降低关键步骤流失 3. 商业/收入类指标 指标中文名 英文缩写 计算公式 作用 / 关注点 关注方向 交易总额 GMV 订单总金额（不扣退款） 电商/交易平台最重要规模指标 ↑ 实收金额 收入 GMV - 退款 - 渠道费等 实际到手收入 ↑ 客单价 AOV / ARPU 收入 ÷ 订单数 / 付费用户数 用户付费能力与结构 ↑（但不能牺牲转化） 付费率 Paying Rate 付费用户数 ÷ DAU/MAU 变现渗透率 游戏5–15%，工具1–8% ARPPU ARPPU 收入 ÷ 付费用户数 付费用户平均贡献 ↑ LTV Lifetime Value 用户生命周期内贡献总收入 衡量用户终身价值 &gt; CAC 3–5倍为健康 4. 健康/质量类指标（常被忽略但非常重要） 指标中文名 计算公式 / 定义 关注点 报警红线参考 崩溃率 崩溃次数 / 启动次数 App稳定性最直接指标 &lt;0.5–1‰ ANR/卡顿率 ANR/卡顿次数 / 使用次数 Android体验痛点 &lt;1–2% 加载成功率 成功加载次数 / 尝试次数 影响留存的第一体验关 &gt;98–99% 核心功能完成功率 完成人数 / 进入人数 验证功能是否真正被使用 &gt;60–80%（视功能） NPS / 满意度 问卷净推荐值 用户主观感知 &gt;30为及格，&gt;50优秀 三、 快速搭建指标看板建议（北极星模型） 推荐分层结构（由上到下）：\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="http://localhost:1313/portrait.jpg" 
+                        width=""
+                        height=""
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">杨宗亿的个人博客</a></h1>
+            <h2 class="site-description">通信工程 | Python | LLM</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pen-tool" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg>
+                
+                <span>文章</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/gameskill-agent%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%E8%A1%A1%E9%87%8F/">GameSKill Agent核心指标衡量</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2026-03-05T10:37:07&#43;08:00'>Thursday, March 5, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minutes read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <h1 id="产品指标体系学习与常用衡量表格笔记">产品指标体系学习与常用衡量表格笔记
+</h1><hr>
+<h2 id="一-基础概念">一、 基础概念
+</h2><h3 id="1-什么是产品指标体系">1. 什么是产品指标体系？
+</h3><ul>
+<li><strong>定义</strong>：一套结构化的、可量化的数值集合，用于描述、诊断、预测和驱动业务健康与增长。</li>
+<li><strong>核心目的</strong>：统一度量衡 → 减少沟通成本 → 支持决策 → 指导优化迭代</li>
+<li><strong>常见分类</strong>（由浅到深）：
+<ul>
+<li>描述现状（发生了什么）</li>
+<li>拆解原因（为什么发生）</li>
+<li>预测趋势（接下来会怎样）</li>
+<li>驱动行动（我们该做什么）</li>
+</ul>
+</li>
+</ul>
+<h4 id="对比知识点">对比知识点：
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">产品类型</th>
+          <th style="text-align: left">最核心关注指标（Top3）</th>
+          <th>典型关注周期</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>内容/社交</strong></td>
+          <td style="text-align: left">DAU、时长、互动率</td>
+          <td>日/周</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>电商/交易</strong></td>
+          <td style="text-align: left">GMV、转化率、客单价</td>
+          <td>日/周/月</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>工具/效率</strong></td>
+          <td style="text-align: left">日活、使用频次、核心功能完成功率</td>
+          <td>日/周</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>游戏</strong></td>
+          <td style="text-align: left">DAU、ARPPU、留存率、付费率</td>
+          <td>日/周/月</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="2-指标层级北极星指标--一级指标--二级指标">2. 指标层级（北极星指标 → 一级指标 → 二级指标）
+</h3><ul>
+<li><strong>北极星指标</strong>（1个）：团队长期对齐的终极衡量目标</li>
+<li><strong>一级指标</strong>（3–8个）：直接影响北极星的关键拆解维度</li>
+<li><strong>二级/三级指标</strong>：诊断原因、定位问题用的明细指标</li>
+</ul>
+<hr>
+<h2 id="二-常用核心指标速查表">二、 常用核心指标速查表
+</h2><h3 id="1-用户类指标">1. 用户类指标
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>指标中文名</th>
+          <th>英文缩写</th>
+          <th>计算公式</th>
+          <th>作用 / 关注点</th>
+          <th>常见目标方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>日活跃用户数</td>
+          <td>DAU</td>
+          <td>当天去重登录/使用用户数</td>
+          <td>衡量产品整体活跃规模</td>
+          <td>↑ 持续增长</td>
+      </tr>
+      <tr>
+          <td>月活跃用户数</td>
+          <td>MAU</td>
+          <td>自然月内去重用户数</td>
+          <td>衡量用户基数与覆盖广度</td>
+          <td>↑ 长期健康</td>
+      </tr>
+      <tr>
+          <td>新增用户数</td>
+          <td>DNU / 新增</td>
+          <td>当天首次使用用户数</td>
+          <td>增长引擎最直接体现</td>
+          <td>↑ 拉新效果</td>
+      </tr>
+      <tr>
+          <td>次日留存率</td>
+          <td>Day1 Retention</td>
+          <td>新增用户第2天回访比例</td>
+          <td>产品是否真正解决用户问题（最重要留存指标）</td>
+          <td>&gt;40%（消费）&gt;25%（工具）</td>
+      </tr>
+      <tr>
+          <td>7日留存率</td>
+          <td>Day7</td>
+          <td>新增用户第8天回访比例</td>
+          <td>中期粘性与价值感知</td>
+          <td>&gt;10–15%</td>
+      </tr>
+      <tr>
+          <td>人均使用时长</td>
+          <td>Avg Duration</td>
+          <td>总使用时长 / DAU</td>
+          <td>内容/沉浸型产品的核心健康度</td>
+          <td>↑</td>
+      </tr>
+      <tr>
+          <td>使用频次</td>
+          <td>Frequency</td>
+          <td>DAU / MAU</td>
+          <td>用户粘性（越高越好）</td>
+          <td>&gt;0.2–0.3（工具类更高）</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="2-流量与转化类指标">2. 流量与转化类指标
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>指标中文名</th>
+          <th>英文</th>
+          <th>计算公式</th>
+          <th>作用 / 关注点</th>
+          <th>典型健康值参考</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>页面浏览量</td>
+          <td>PV</td>
+          <td>页面打开总次数</td>
+          <td>流量规模</td>
+          <td>— <img src="/images/cover.png" width="240" alt="GMV趋势图">你好你你你你你你你你你你你你</td>
+      </tr>
+      <tr>
+          <td>独立访客</td>
+          <td>UV</td>
+          <td>去重访问人数</td>
+          <td>真实流量来源规模</td>
+          <td>—</td>
+      </tr>
+      <tr>
+          <td>注册/登录转化率</td>
+          <td>—</td>
+          <td>注册/登录数 ÷ 启动/访问数</td>
+          <td>拉新漏斗第一步效率</td>
+          <td>30–70%（视场景）</td>
+      </tr>
+      <tr>
+          <td>整体转化率</td>
+          <td>Conversion</td>
+          <td>最终付费/下单数 ÷ 启动/访问数</td>
+          <td>完整商业闭环效率</td>
+          <td>电商1–5%，游戏5–20%</td>
+      </tr>
+      <tr>
+          <td>漏斗流失率</td>
+          <td>Drop-off</td>
+          <td>(上步人数 - 下步人数) / 上步人数</td>
+          <td>定位体验/设计/文案问题</td>
+          <td>尽量降低关键步骤流失</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="3-商业收入类指标">3. 商业/收入类指标
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>指标中文名</th>
+          <th>英文缩写</th>
+          <th>计算公式</th>
+          <th>作用 / 关注点</th>
+          <th>关注方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>交易总额</td>
+          <td>GMV</td>
+          <td>订单总金额（不扣退款）</td>
+          <td>电商/交易平台最重要规模指标</td>
+          <td>↑</td>
+      </tr>
+      <tr>
+          <td>实收金额</td>
+          <td>收入</td>
+          <td>GMV - 退款 - 渠道费等</td>
+          <td>实际到手收入</td>
+          <td>↑</td>
+      </tr>
+      <tr>
+          <td>客单价</td>
+          <td>AOV / ARPU</td>
+          <td>收入 ÷ 订单数 / 付费用户数</td>
+          <td>用户付费能力与结构</td>
+          <td>↑（但不能牺牲转化）</td>
+      </tr>
+      <tr>
+          <td>付费率</td>
+          <td>Paying Rate</td>
+          <td>付费用户数 ÷ DAU/MAU</td>
+          <td>变现渗透率</td>
+          <td>游戏5–15%，工具1–8%</td>
+      </tr>
+      <tr>
+          <td>ARPPU</td>
+          <td>ARPPU</td>
+          <td>收入 ÷ 付费用户数</td>
+          <td>付费用户平均贡献</td>
+          <td>↑</td>
+      </tr>
+      <tr>
+          <td>LTV</td>
+          <td>Lifetime Value</td>
+          <td>用户生命周期内贡献总收入</td>
+          <td>衡量用户终身价值</td>
+          <td>&gt; CAC 3–5倍为健康</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="4-健康质量类指标常被忽略但非常重要">4. 健康/质量类指标（常被忽略但非常重要）
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>指标中文名</th>
+          <th>计算公式 / 定义</th>
+          <th>关注点</th>
+          <th>报警红线参考</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>崩溃率</td>
+          <td>崩溃次数 / 启动次数</td>
+          <td>App稳定性最直接指标</td>
+          <td>&lt;0.5–1‰</td>
+      </tr>
+      <tr>
+          <td>ANR/卡顿率</td>
+          <td>ANR/卡顿次数 / 使用次数</td>
+          <td>Android体验痛点</td>
+          <td>&lt;1–2%</td>
+      </tr>
+      <tr>
+          <td>加载成功率</td>
+          <td>成功加载次数 / 尝试次数</td>
+          <td>影响留存的第一体验关</td>
+          <td>&gt;98–99%</td>
+      </tr>
+      <tr>
+          <td>核心功能完成功率</td>
+          <td>完成人数 / 进入人数</td>
+          <td>验证功能是否真正被使用</td>
+          <td>&gt;60–80%（视功能）</td>
+      </tr>
+      <tr>
+          <td>NPS / 满意度</td>
+          <td>问卷净推荐值</td>
+          <td>用户主观感知</td>
+          <td>&gt;30为及格，&gt;50优秀</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="三-快速搭建指标看板建议北极星模型">三、 快速搭建指标看板建议（北极星模型）
+</h2><p>推荐分层结构（由上到下）：</p>
+<ol>
+<li>
+<p><strong>顶层看板</strong>（高管/周会用）<br>
+北极星指标 + 3–5个一级拆解指标 + 趋势折线 + 同比/环比</p>
+</li>
+<li>
+<p><strong>部门/模块看板</strong>（日/周运营用）<br>
+漏斗图 + 留存曲线 + 核心功能使用率 + 异常报警卡片</p>
+</li>
+<li>
+<p><strong>分析诊断看板</strong>（问题定位用）<br>
+多维度拆解（渠道、新老、地域、版本、设备…） + TopN 异常分析</p>
+</li>
+</ol>
+<p>常用可视化搭配建议：</p>
+<ul>
+<li><strong>核心数值</strong> → 大数字卡片（带同比/环比颜色）</li>
+<li><strong>趋势</strong> → 折线图 / 面积图</li>
+<li><strong>结构对比</strong> → 柱状图 / 堆积图 / 饼图</li>
+<li><strong>转化路径</strong> → 漏斗图</li>
+<li><strong>分布</strong> → 直方图 / 箱型图</li>
+<li><strong>明细</strong> → 透视表 / 表格</li>
+</ul>
+<hr>
+<h2 id="四-学习心得与易错点">四、 学习心得与易错点
+</h2><blockquote>
+<h3 id="-经验总结">💡 经验总结
+</h3><ol>
+<li><strong>先定北极星，再拆指标</strong> —— 没有北极星的指标体系就是一盘散沙。</li>
+<li><strong>留存 &gt; 一切</strong> —— 新用户次日留存是检验产品是否真正“有用”的最硬指标。</li>
+<li><strong>口径必须统一</strong> —— DAU到底算“启动即活”还是“至少停留5秒”？团队内必须对齐。</li>
+<li><strong>不要唯数据论</strong> —— 数据告诉你“什么发生了”，但很少直接告诉你“为什么”和“该怎么办”。</li>
+<li><strong>关注“率”比“量”更重要</strong> —— 规模上来后，各种率（留存、转化、付费、崩溃率）才是决定天花板的因素。</li>
+</ol>
+</blockquote>
+<p>欢迎收藏 &amp; 持续迭代你的专属指标体系～</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 杨宗亿的个人博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.bcead1b1367f383f0b6b3723a66d4b6f164a18c02249fa46f0fdeb46e64ad3e1.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
