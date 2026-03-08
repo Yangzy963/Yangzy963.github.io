@@ -32,8 +32,7 @@
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="二运行遇到的问题"&gt;二、运行遇到的问题
-&lt;/h2&gt;&lt;h3 id="1-用户类指标"&gt;1. 用户类指标
-&lt;/h3&gt;&lt;table&gt;
+&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;问题类型&lt;/th&gt;
@@ -56,6 +55,43 @@
 &lt;td&gt;状态认知缺失、逻辑幻觉&lt;/td&gt;
 &lt;td&gt;重复某一相同步骤&lt;/td&gt;
 &lt;td&gt;以「2048」为例 &lt;br&gt; &lt;img src="https://yangzongyi.cn/images/p4.png" width="150" alt="GMV趋势图"&gt; &lt;br&gt; 💭 思考过程:点击后，数字8仍然被高亮，但界面没有弹出任何选项。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试在数字8上长按，然后滑动，看看能否触发合并操作。&lt;br&gt; &lt;img src="https://yangzongyi.cn/images/p4.png" width="150" alt="GMV趋势图"&gt;&lt;br&gt; 💭 思考过程:长按后，界面没有变化。让我重新思考一下。也许这个游戏需要我通过某种特定的操作来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。或者，也许我需要通过某种特定的滑动方式来合并数字。让我尝试点击数字8，然后看看能否触发合并选项。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;响应速度&lt;/td&gt;
+&lt;td&gt;模型的思考延迟导致其指令输出与动态游戏局势存在严重时间差，难以实现高强度、实时化的自动游玩&lt;/td&gt;
+&lt;td&gt;如FPS、MOBA类游戏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="三核心衡量指标"&gt;三、核心衡量指标
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: left"&gt;指标维度&lt;/th&gt;
+&lt;th style="text-align: left"&gt;汇报口径&lt;/th&gt;
+&lt;th style="text-align: left"&gt;指标定义&lt;/th&gt;
+&lt;th style="text-align: left"&gt;量化统计方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left"&gt;覆盖度&lt;/td&gt;
+&lt;td style="text-align: left"&gt;小游戏自动化已支持2大类3款游戏&lt;/td&gt;
+&lt;td style="text-align: left"&gt;支持游戏类型数：自动化支持覆盖的游戏类型数量&lt;br&gt;接入游戏总数：已成功接入自动化的具体游戏数量&lt;/td&gt;
+&lt;td style="text-align: left"&gt;累计计数（持续增长型）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left"&gt;智能度&lt;/td&gt;
+&lt;td style="text-align: left"&gt;小游戏自动化平均游戏步数 &amp;gt; 30 步&lt;/td&gt;
+&lt;td style="text-align: left"&gt;平均游戏步数：从开始游戏到游戏失败的平均操作步数&lt;/td&gt;
+&lt;td style="text-align: left"&gt;多次运行平均值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left"&gt;运行性能&lt;/td&gt;
+&lt;td style="text-align: left"&gt;平均每分钟有效操作次数&amp;gt; 3 步&lt;/td&gt;
+&lt;td style="text-align: left"&gt;单位时间内的有效操作次数&lt;/td&gt;
+&lt;td style="text-align: left"&gt;实时监控平均值（每个任务记录有效操作次数和运行时长）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;</description></item><item><title>Skill</title><link>https://yangzongyi.cn/post/skill/</link><pubDate>Sat, 14 Feb 2026 15:54:36 +0800</pubDate><guid>https://yangzongyi.cn/post/skill/</guid><description>&lt;h1 id="agent-进化论一文读懂让-ai-真正干活的-skills-机制"&gt;Agent 进化论：一文读懂让 AI 真正“干活”的 Skills 机制
