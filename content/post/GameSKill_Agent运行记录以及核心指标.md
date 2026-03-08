@@ -1,7 +1,7 @@
 +++
 date = '2026-03-06T16:27:01+08:00'
 draft = false
-title = 'GameSKill_Agent运行记录'
+title = 'GameSKill_Agent运行记录以及核心指标'
 +++
 
 
